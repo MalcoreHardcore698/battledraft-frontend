@@ -1,0 +1,298 @@
+/* Special */
+:root {
+    --accent-gray-color: #B7B7B7;
+    --accent-gray-background: #EFEFEF;
+    --addition-button-color: #4F4F4F;
+    --accent-transition: all .3s ease;
+    --addition-transition: all .6s ease;
+}
+
+::selection {
+    background-color: black;
+    color: white;
+}
+
+/* Tag rules */
+body {
+    background-color: #DADADA;
+    margin: 0;
+    padding: 0;
+    font: 1rem 'Roboto', sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6, a, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+
+a, a:hover, a:active, a:focus {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+li, ol {
+    list-style: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    border-radius: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+label {
+    color: var(--accent-gray-color);
+    font-size: .875rem;
+    margin: 0 0 10px 0;
+}
+
+input {
+    border: none;
+    outline: none;
+    background-color: var(--accent-gray-background);
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+/* Class rules */
+.bd-inputfield,
+.bd-headline .bd-headline__navigation ul,
+.bd-headline .bd-headline__navigation ul li,
+.bd-headline .bd-headline__navigation .logotype,
+.bd-headline .bd-headline__navigation .logotype img,
+.bd-block-default,
+.bd-checkboxfield .bd-checkmark,
+.bd-auth__switcher button span,
+.bd-checkboxfield  {
+    display: flex;
+}
+
+.bd-inputfield,
+.bd-auth__content,
+.bd-about .bd-block-default,
+.bd-tournaments .bd-block-default {
+    flex-direction: column;
+}
+
+.bd-auth,
+.bd-about,
+.bd-tournaments,
+.bd-auth__content,
+.bd-auth__authentication,
+.bd-auth__registration {
+    display: grid;
+}
+
+.bd-headline__navigation {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 42px;
+    height: 42px;
+    background-color: #262626;
+    color: white;
+    padding: 0 15%;
+}
+
+.bd-headline .bd-headline__navigation {
+    align-items: center;
+    height: 100%;
+}
+
+.bd-headline .bd-headline__navigation {
+    justify-content: flex-end;
+}
+
+.bd-headline .bd-headline__navigation ul {
+    justify-content: flex-end;
+}
+
+.bd-headline .bd-headline__navigation ul li {
+    align-items: center;
+    margin-left: 15px;
+}
+
+.bd-headline .bd-headline__navigation ul li a {
+    font-weight: 100;
+}
+
+.bd-headline .bd-headline__navigation .logotype {
+    margin-left: 0;
+}
+
+.bd-headline .bd-headline__navigation .logotype img {
+    align-items: center;
+    height: 22px;
+    object-fit: contain;
+}
+
+.bd-block-default {
+    position: relative;
+    border-radius: 15px;
+    background-color: white;
+    margin: 0;
+    padding: 15px;
+    min-width: 245px;
+}
+
+.bd-block-default p {
+    margin: 10px;
+}
+
+.bd-auth .bd-block-default {
+    width: 245px;
+}
+
+.bd-about .bd-block-default {
+    width: 50%;
+    justify-self: center;
+}
+
+.bd-tournaments .bd-block-default {
+    justify-self: center;
+}
+
+.bd-block-default .title {
+    position: relative;
+    top: -15px;
+    left: -15px;
+    width: calc(100% + 30px);
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    background-color: #F3F3F3;
+    border-bottom: 1px solid #E7E7E7;
+    margin: 0 0 -15px 0;
+    padding: 10px 0;
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.bd-button-default {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #EFEFEF;
+    color: #C1C1C1;
+}
+
+.bd-button-default.accept {
+    background-color: #4DB647;
+    color: white;
+}
+
+.bd-button-default.link {
+    background-color: transparent;
+    color: white;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1rem;
+}
+
+.bd-checkboxfield {
+    cursor: pointer;
+}
+
+.bd-checkboxfield p {
+    color: var(--accent-gray-color);
+    font-size: .875rem;
+    transition: var(--accent-transition);
+    margin: 0;
+}
+
+.bd-checkboxfield.checked p {
+    color: var(--addition-button-color);
+}
+
+.bd-checkboxfield .bd-checkmark {
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent-gray-background);
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: var(--accent-transition);
+}
+
+.bd-checkboxfield.checked .bd-checkmark {
+    background-color: var(--addition-button-color);
+}
+
+.bd-checkboxfield .bd-checkmark img {
+    width: 100%;
+    padding: 2px;
+}
+
+.bd-auth {
+    grid-gap: 50px;
+}
+
+.bd-center {
+    position: fixed;
+    top: 20%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.bd-auth__switcher {
+    justify-content: space-between;
+}
+
+.bd-auth__switcher p {
+    align-self: center;
+    font-weight: 900;
+    margin: 0;
+}
+
+.bd-auth__switcher button {
+    position: relative;
+    background-color: var(--addition-button-color);
+    border-radius: 120em;
+    width: 60px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.bd-auth__switcher button span {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: var(--accent-transition);
+}
+
+.bd-auth__switcher button span.switch {
+    left: 38px;
+}
+
+.bd-auth__content {
+    perspective: 1000px;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+.bd-auth__authentication,
+.bd-auth__registration {
+    grid-gap: 10px;
+    backface-visibility: hidden;
+}
+
+.bd-auth__authentication {
+    z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.bd-auth__registration {
+    z-index: 2;
+	transform: rotateY(180deg);
+}
+
+.bd-auth__content.switch {
+    transform: rotateY(180deg);
+}
