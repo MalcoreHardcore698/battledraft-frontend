@@ -5,9 +5,12 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { HeadlineContainer } from './containers/HeadlineContainer'
 import { AuthContainer } from './containers/AuthContainer'
 import { TournamentsContainer } from './containers/TournamentsContainer'
+
+import { Side } from './ui/Side'
 import { About } from './ui/About'
 import { Support } from './ui/Support/Support'
 import { FAQ } from './ui/FAQ/FAQ'
+
 
 import './../css/App.css'
 
@@ -30,6 +33,8 @@ export const App = () => {
           setTitleOfPage={setTitleOfPage}
         />
 
+        {(isAuthenticated) ? <Side /> : ''}
+
         <Switch>
           {(!isAuthenticated)
           ?
@@ -45,7 +50,7 @@ export const App = () => {
               exact
             />
           }
-          <Route path="/about" render={() => <About />} />
+          <Route path="/about" render={() => <About isAuthenticated={isAuthenticated} />} />
 
           {(isAuthenticated) ?
             <Route

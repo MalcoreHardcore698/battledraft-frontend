@@ -19,6 +19,22 @@ body {
     padding: 0;
     font: 1rem 'Roboto', sans-serif;
     line-height: 1.5;
+    overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+    border-top: 42px solid #262626;
+}
+
+body::-webkit-scrollbar-trace {
+    border-top: 15px solid #262626;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .15);
 }
 
 h1, h2, h3, h4, h5, h6, a, ul, li, p {
@@ -75,18 +91,36 @@ input {
 
 .bd-inputfield,
 .bd-auth__content,
-.bd-about .bd-block-default,
+.bd-block-default,
 .bd-tournaments .bd-block-default {
     flex-direction: column;
 }
 
+.bd-app,
 .bd-auth,
 .bd-about,
+.bd-areaside,
 .bd-tournaments,
+.bd-tournaments-list,
 .bd-auth__content,
 .bd-auth__authentication,
 .bd-auth__registration {
     display: grid;
+}
+
+.bd-app {
+    position: relative;
+    grid-template-columns:  1fr;
+    padding: 120px 15%;
+    height: calc(100vh - 240px);
+}
+
+.bd-headline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .bd-headline__navigation {
@@ -135,6 +169,30 @@ input {
     object-fit: contain;
 }
 
+.bd-areaside {
+    position: fixed;
+    left: 15%;
+    grid-gap: 45px;
+    grid-template-rows: repeat(3, min-content);
+}
+
+.bd-areamain {
+    height: min-content;
+    margin-left: 315px;
+    margin-bottom: 145px;
+}
+
+.bd-areamain h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 45px;
+    line-height: 1;
+}
+
+.bd-areamain.bd-about .bd-block-default {
+    width: 100%;
+}
+
 .bd-block-default {
     position: relative;
     border-radius: 15px;
@@ -142,6 +200,7 @@ input {
     margin: 0;
     padding: 15px;
     min-width: 245px;
+    height: min-content;
 }
 
 .bd-block-default p {
@@ -157,8 +216,16 @@ input {
     justify-self: center;
 }
 
+.bd-areamain.bd-about .bd-block-default,
 .bd-tournaments .bd-block-default {
     justify-self: center;
+    width: 100%;
+    padding: 0;
+}
+
+.bd-areamain.bd-about .bd-block-default p,
+.bd-tournaments .bd-block-default p {
+    margin: 15px;
 }
 
 .bd-block-default .title {
@@ -176,6 +243,14 @@ input {
     font-size: 1rem;
 }
 
+.bd-areamain.bd-about .bd-block-default .title,
+.bd-tournaments .bd-block-default .title {
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
 .bd-button-default {
     border-radius: 5px;
     padding: 5px;
@@ -184,6 +259,12 @@ input {
     text-align: center;
     font-size: .875rem;
     line-height: 1.25;
+}
+
+.bd-button-default.filter {
+    margin: 15px;
+    width: min-content;
+    min-width: auto;
 }
 
 .bd-button-default.accept {
@@ -240,13 +321,14 @@ input {
 .bd-center {
     position: fixed;
     top: 20%;
-    width: 100%;
+    width: 70%;
     justify-content: center;
     align-content: center;
 }
 
 .bd-auth__switcher {
     justify-content: space-between;
+    flex-direction: row !important;
 }
 
 .bd-auth__switcher p {
@@ -303,4 +385,41 @@ input {
 
 .bd-auth__content.switch {
     transform: rotateY(180deg);
+}
+
+.bd-tournaments-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+.bd-tournaments-filter .bd-tournaments-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+}
+
+.bd-tournaments-filter .bd-tournaments-filter-list .bd-block-default {
+    margin-right: 15px;
+}
+
+.bd-tournaments-filter .bd-tournaments-filter-list .bd-block-default,
+.bd-tournaments-filter .bd-tournaments-filter-expand .bd-block-default {
+    width: auto;
+    min-width: auto;
+}
+
+.bd-tournaments-list {
+    grid-gap: 15px;
+}
+
+@media only screen and (max-width: 992px) {
+    .bd-areamain {
+        margin-left: 0;
+    }
+
+    .bd-areaside {
+        position: initial;
+        margin-bottom: 45px;
+    }
 }

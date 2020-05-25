@@ -1,14 +1,19 @@
 import React from 'react'
 
-import { BlockTitle } from './../BlockTitle'
-import { Paragraph } from './../Paragraph'
+import { TournamentFilter } from './TournametsFilter'
+import { TournamentItem } from './TournametsItem'
 
 export const Tournaments = () => {
     return (
-        <div className="bd-tournaments bd-center">
-            <div className="bd-block-default">
-                <BlockTitle title="Tournaments" />
-                <Paragraph text="Welcome to Tournaments!" />
+        <div className="bd-areamain bd-tournaments">
+            <h1>Tournaments</h1>
+
+            <TournamentFilter />
+
+            <div className="bd-tournaments-list">
+                {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map(tournament =>
+                    <TournamentItem />
+                )}
             </div>
         </div>
     )

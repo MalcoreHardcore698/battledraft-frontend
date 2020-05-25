@@ -5,7 +5,8 @@ import { Paragraph } from './../Paragraph'
 
 export const FAQ = () => {
     return (
-        <div className="bd-about bd-center">
+        <div className="bd-areamain bd-faq">
+            <h1>FAQ</h1>
             <div className="bd-block-default">
                 <BlockTitle title="FAQ" />
 
