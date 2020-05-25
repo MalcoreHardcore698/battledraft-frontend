@@ -9,11 +9,11 @@ export const AuthenticationForm = ({ method, handler }) => {
     const [checked, setCheckbox] = useState(false)
 
     return (
-        <div className="bd-auth__authentication">
+        <form className="bd-auth__authentication">
             <BlockTitle title="Authentication" />
 
             <InputField name="login" label="Login" type="text" />
-            <InputField name="password" label="Password" type="password" />
+            <InputField name="auth-password" label="Password" type="password" />
             <Checkbox label="Remember Me" checked={checked} setCheckbox={setCheckbox} />
 
             <Button
@@ -21,6 +21,6 @@ export const AuthenticationForm = ({ method, handler }) => {
                 type="accept"
                 handler={handler}
             />
-        </div>
+        </form>
     )
 }

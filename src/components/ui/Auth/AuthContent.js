@@ -4,8 +4,7 @@ import { AuthenticationForm } from './../AuthenticationForm'
 import { RegistrationForm } from './../RegistrationForm'
 
 export const AuthContent = ({ method, setAuthenticated, setTitleOfPage }) => {
-    const handlerSubmit = (e) => {
-        e.preventDefault()
+    const handlerSubmit = () => {
         setTitleOfPage('Tournaments')
         setAuthenticated(true)
     }

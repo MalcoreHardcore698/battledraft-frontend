@@ -121,6 +121,10 @@ input {
     font-weight: 100;
 }
 
+.bd-headline .bd-headline__navigation ul li a.active {
+    font-weight: 500;
+}
+
 .bd-headline .bd-headline__navigation .logotype {
     margin-left: 0;
 }
@@ -177,6 +181,9 @@ input {
     padding: 5px;
     background-color: #EFEFEF;
     color: #C1C1C1;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1.25;
 }
 
 .bd-button-default.accept {
@@ -190,6 +197,7 @@ input {
     padding: 0;
     border-radius: 0;
     font-size: 1rem;
+    font-weight: 100;
 }
 
 .bd-checkboxfield {

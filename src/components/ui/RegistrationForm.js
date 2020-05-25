@@ -6,11 +6,12 @@ import { Button } from './Button'
 
 export const RegistrationForm = ({ method, handler }) => {
     return (
-        <div className="bd-auth__registration">
+        <form className="bd-auth__registration">
             <BlockTitle title="Registration" />
             
             <InputField name="login" label="Login" type="text" />
-            <InputField name="password" label="Password" type="password" />
+            <InputField name="reg-password" label="Password" type="password" />
+            <InputField name="reg-repeat-password" label="Repeat password" type="password" />
             <InputField name="phone" label="Phone" type="tel" />
             <InputField name="email" label="Email" type="email" />
 
@@ -19,6 +20,6 @@ export const RegistrationForm = ({ method, handler }) => {
                 type="accept"
                 handler={handler}
             />
-        </div>
+        </form>
     )
 }

@@ -31,20 +31,38 @@ export const App = () => {
         />
 
         <Switch>
-          {(!isAuthenticated) ?
+          {(!isAuthenticated)
+          ?
             <Route
               path="/"
               render={() => <AuthContainer setAuthenticated={setAuthenticated} setTitleOfPage={setTitleOfPage} />}
               exact
-            /> :
+            />
+          :
             <Route
               path="/"
               render={() => <TournamentsContainer />}
+              exact
             />
           }
           <Route path="/about" render={() => <About />} />
-          {(isAuthenticated) ? <Route path="/support" render={() => <Support />} /> : ''}
-          {(isAuthenticated) ? <Route path="/faq" render={() => <FAQ />} /> : ''}
+
+          {(isAuthenticated) ?
+            <Route
+              path="/support"
+              render={() => <Support />}
+              exact 
+            />
+          : ''}
+
+          {(isAuthenticated) ?
+            <Route
+              path="/faq"
+              render={() => <FAQ />}
+              exact
+            />
+          : ''}
+          
           <Redirect to="/" />
         </Switch>
       </Router>
