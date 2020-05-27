@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CheckIcon from './../../img/check.svg'
+import CheckIcon from './../../../img/check.svg'
 
 export const Checkbox = ({ label, checked, setCheckbox }) => {
     return (

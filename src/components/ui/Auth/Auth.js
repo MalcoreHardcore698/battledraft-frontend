@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 
-import { AuthSwitcher } from './AuthSwitcher'
-import { AuthContent } from './AuthContent'
+import { Switcher } from './Switcher'
+import { Content } from './Content'
 
-export const Auth = ({ setAuthenticated, setTitleOfPage }) => {
+export const Auth = ({ setAuthenticated }) => {
     const [method, setMethod] = useState('log')
 
     return (
         <div className="bd-auth bd-center">
-            <AuthSwitcher
+            <Switcher
                 method={method}
                 setMethod={setMethod}
-                setTitleOfPage={setTitleOfPage}
             />
-            <AuthContent
+            <Content
                 method={method}
                 setAuthenticated={setAuthenticated}
-                setTitleOfPage={setTitleOfPage}
             />
         </div>
     )

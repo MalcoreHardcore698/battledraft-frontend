@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import { BlockTitle } from './BlockTitle'
-import { InputField } from './InputField'
-import { Checkbox } from './Checkbox'
-import { Button } from './Button'
+import { BlockTitle } from './../Common/BlockTitle'
+import { InputField } from './../Common/InputField'
+import { Checkbox } from './../Common/Checkbox'
+import { Button } from './../Common/Button'
 
-export const AuthenticationForm = ({ method, handler }) => {
+export const Auth = ({ method, handler }) => {
     const [checked, setCheckbox] = useState(false)
 
     return (

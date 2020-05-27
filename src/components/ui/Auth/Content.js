@@ -1,25 +1,24 @@
 import React from 'react'
 
-import { AuthenticationForm } from './../AuthenticationForm'
-import { RegistrationForm } from './../RegistrationForm'
+import { Auth } from './../Form/Auth'
+import { Reg } from './../Form/Reg'
 
-export const AuthContent = ({ method, setAuthenticated, setTitleOfPage }) => {
+export const Content = ({ method, setAuthenticated }) => {
     const handlerSubmit = () => {
-        setTitleOfPage('Tournaments')
         setAuthenticated(true)
     }
 
     return (
         <div className={`bd-auth__content bd-block-default${(method === 'log') ? '' : ' switch'}`}>
             {(method === 'log') ?
-                <AuthenticationForm
+                <Auth
                     method={method}
                     handler={handlerSubmit}
                 />
             : ''}
 
             {(method === 'reg') ?
-                <RegistrationForm
+                <Reg
                     method={method}
                     handler={handlerSubmit}
                 />

@@ -1,10 +1,9 @@
 import React from 'react'
 
-export const AuthSwitcher = ({ method, setMethod, setTitleOfPage }) => {
+export const Switcher = ({ method, setMethod }) => {
     const handlerSwitcher = (e) => {
         e.preventDefault()
         setMethod(method === 'log' ? 'reg' : 'log')
-        setTitleOfPage(method === 'log' ? 'Registration' : 'Authentication')
     }
 
     return (

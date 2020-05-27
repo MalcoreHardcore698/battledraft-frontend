@@ -8,3 +8,16 @@ export function signIn(login, password) {
         }
     }
 }
+
+export function chooseChat(chat) {
+    return {
+        type: C.CHOOSE_CHAT,
+        payload: chat
+    }
+}
+
+export function newChat() {
+    return {
+        type: C.NEW_CHAT
+    }
+}

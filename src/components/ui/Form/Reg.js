@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { BlockTitle } from './BlockTitle'
-import { InputField } from './InputField'
-import { Button } from './Button'
+import { BlockTitle } from './../Common/BlockTitle'
+import { InputField } from './../Common/InputField'
+import { Button } from './../Common/Button'
 
-export const RegistrationForm = ({ method, handler }) => {
+export const Reg = ({ method, handler }) => {
     return (
         <form className="bd-auth__registration">
             <BlockTitle title="Registration" />
