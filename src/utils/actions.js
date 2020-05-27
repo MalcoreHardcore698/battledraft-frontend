@@ -21,3 +21,12 @@ export function newChat() {
         type: C.NEW_CHAT
     }
 }
+
+export function newMessage(userId, chatId, message) {
+    return {
+        type: C.NEW_MESSAGE,
+        payload: {
+            userId, chatId, message
+        }
+    }
+}

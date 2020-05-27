@@ -4,7 +4,8 @@ import { Hub } from '../ui/Hub/Hub'
 
 import {
     chooseChat,
-    newChat
+    newChat,
+    newMessage
 } from './../../utils/actions'
 
 export const HubContainer = connect(
@@ -17,6 +18,9 @@ export const HubContainer = connect(
         },
         onNewChat: () => {
             dispatch(newChat())
+        },
+        onNewMessage: (userId, chatId, message) => {
+            dispatch(newMessage(userId, chatId, message))
         }
     })
 )(Hub)
