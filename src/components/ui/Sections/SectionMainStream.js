@@ -10,7 +10,7 @@ export const MainStream = ({ games, setCurrentGame }) => {
         nav: false,
         mouseDrag: true,
         controls: false,
-        items: 3,
+        items: 1,
         gutter: 25,
         edgePadding: 50,
         loop: false,
