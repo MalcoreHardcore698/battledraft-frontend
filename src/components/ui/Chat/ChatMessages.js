@@ -38,7 +38,7 @@ export const ChatMessages = ({ state, onNewMessage }) => {
     }, [state.user.chats, chatId])
     
     return (
-        <div className="messages">
+        <React.Fragment>
             {(!chat || chat.messages.length === 0) ?
                 <p className="history no-messages">No Messages</p> :
                 <ul className="history">
@@ -62,6 +62,6 @@ export const ChatMessages = ({ state, onNewMessage }) => {
                 />
                 <button onClick={handlerSubmit}><FontAwesomeIcon icon={faPaperPlane}/></button>
             </form>
-        </div>
+        </React.Fragment>
     )
 }

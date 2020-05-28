@@ -53,6 +53,55 @@ export default {
                         avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
                         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
                         date: new Date()
+                    },
+                    {
+                        userId: 0,
+                        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2KaXi7kejQqMQx-IE-N3ao8GKbtVewhVOtY3p295M6Te2gsrW&usqp=CAU',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 1,
+                        avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 0,
+                        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2KaXi7kejQqMQx-IE-N3ao8GKbtVewhVOtY3p295M6Te2gsrW&usqp=CAU',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 1,
+                        avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    
+                    {
+                        userId: 0,
+                        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2KaXi7kejQqMQx-IE-N3ao8GKbtVewhVOtY3p295M6Te2gsrW&usqp=CAU',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 1,
+                        avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 0,
+                        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2KaXi7kejQqMQx-IE-N3ao8GKbtVewhVOtY3p295M6Te2gsrW&usqp=CAU',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
+                    },
+                    {
+                        userId: 1,
+                        avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
+                        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+                        date: new Date()
                     }
                 ]
             },

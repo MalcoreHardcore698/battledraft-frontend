@@ -8,7 +8,7 @@ export const ChatLink = ({ chat, onChooseChat }) => {
     ]
     return (
         <li>
-            <NavLink to={`/chats/${chat.id}`} activeClass="active" className={classes.join(' ')} onClick={() => onChooseChat(chat)}>
+            <NavLink to={`/chats/${chat.id}`} activeclass="active" className={classes.join(' ')} onClick={() => onChooseChat(chat)}>
                 <img src={chat.img} alt="Icon Game" />
             </NavLink>
         </li>
