@@ -245,7 +245,7 @@ img {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 72px;
+    height: 100%;
 }
 
 .bd-sidebar .bd-sidebar-navigation .bd-sidebar-navigation__burger span {
@@ -415,17 +415,17 @@ img {
     font-weight: 500;
 }
 
-.bd-main .bd-headers button {
+.bd-main .bd-headers a {
     font-size: .875rem;
     font-weight: 500;
-    padding: 15px 25px;
+    padding: 5px 25px;
     background: white;
     border-radius: var(--border-radius);
-    color: #d2d2d2;
+    color: #808080;
     transition: all .3s ease;
 }
 
-.bd-main .bd-headers button:hover {
+.bd-main .bd-headers a:hover {
     color: #333;
 }
 
@@ -438,6 +438,7 @@ img {
     border-radius: var(--border-radius);
     color: #cacaca;
     height: 100%;
+    overflow: hidden;
 }
 
 .bd-main .no-messages {
@@ -520,10 +521,12 @@ img {
 .bd-main .messages .form input {
     flex-grow: 1;
     margin: 0 10px;
+    width: 100%;
 }
 
 .bd-main .messages .form button {
     width: 35px;
+    min-width: 35px;
     background: #efefef;
     border-radius: 5px;
     color: #a5a5a5;
@@ -858,6 +861,10 @@ img {
     margin-bottom: 0;
 }
 
+.bd-sidebar-navigator {
+    display: none;
+}
+
 .offers {
     background: #F7F7FF;
     border-radius: 0 0 25px 25px;
@@ -907,4 +914,232 @@ img {
 
 .tns-inner {
     padding: 50px 0 !important;
+}
+
+@media only screen and (max-width: 1299px) {
+    .bd-sidebar {
+        grid-template-rows: 64px 64px 1fr 64px;
+        min-width: 64px;
+    }
+
+    .bd-sidefeed {
+        display: none;
+    }
+
+    .bd-sidebar-navigator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bd-sidebar-navigator__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: 1.5rem;
+    }
+
+    .bd-sidebar .bd-openchats ul li a.default.active::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid #333;
+        opacity: .45;
+        transition: all .3s ease;
+    }
+
+    .bd-sidebar .bd-openchats ul li a.orange.active::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid var(--accent-orange);
+        opacity: .45;
+        transition: all .3s ease;
+    }
+
+    .bd-sidebar .bd-openchats ul li a.blue.active::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid var(--accent-blue);
+        opacity: .45;
+        transition: all .3s ease;
+    }
+
+    .bd-sidebar .bd-openchats ul li a.purple.active::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid var(--accent-purple);
+        opacity: .45;
+        transition: all .3s ease;
+    }
+
+    .bd-main {
+        padding: 15px 0 15px 15px;
+    }
+
+    .bd-main .bd-sidefeed__popular .offers {
+        padding: 0;
+        grid-gap: 0;
+        overflow: hidden;
+    }
+
+    .bd-main .bd-sidefeed__popular .offers li {
+        border-radius: 0;
+        background: #f3f3f3;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .bd-main {
+        padding: 0;
+    }
+
+    .tns-inner {
+        padding: 25px 0 !important;
+        margin: 0 25px !important;
+    }
+
+    .bd-main article {
+        margin: 0 20px 0 25px;
+    }
+
+    .bd-main .messages {
+        margin: 25px;
+        padding: 10px;
+    }
+
+    .bd-main .messages .history .message p {
+        margin-left: 10px;
+        padding: 25px;
+    }
+
+    .bd-sidefeed__groupchats {
+        margin: 25px 0 0 25px;
+    }
+
+    .bd-sidefeed__popular {
+        margin: 0 0 25px 25px;
+    }
+
+    .bd-main__hotnews {
+        padding-bottom: 0;
+    }
+
+    .bd-modal .bd-modal__body h2 {
+        font-size: 1rem;
+    }
+
+    .bd-main article {
+        padding: 5px;
+        grid-template-columns: 1fr;
+    }
+
+    .bd-main article .image a {
+        display: none;
+    }
+
+    .bd-main article .text h3 {
+        font-size: 1rem;
+    }
+    
+
+    .bd-main article .text p {
+        font-size: .875rem;
+        font-weight: 400;
+    }
+
+    .bd-main .bd-headers {
+        margin: 25px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .bd-app {
+        padding: 0;
+    }
+
+    .bd-hub {
+        border-radius: 0;
+        height: 100vh;
+    }
+
+    .bd-main {
+        padding: 0;
+    }
+
+    .tns-inner {
+        padding: 25px 0 !important;
+        margin: 0 15px !important;
+    }
+
+    .bd-main article {
+        margin: 0 15px;
+    }
+
+    .bd-main .messages {
+        margin: 15px;
+        padding: 10px;
+    }
+
+    .bd-main .messages .history .message p {
+        margin-left: 10px;
+        padding: 15px;
+    }
+
+    .bd-sidefeed__groupchats {
+        margin: 15px 0 0 15px;
+    }
+
+    .bd-sidefeed__popular {
+        margin: 0 0 15px 15px;
+    }
+
+    .bd-main__hotnews {
+        padding-bottom: 0;
+    }
+
+    .bd-modal .bd-modal__body h2 {
+        font-size: 1rem;
+    }
+
+    .bd-main article {
+        padding: 5px;
+        grid-template-columns: 1fr;
+    }
+
+    .bd-main article .text h3 {
+        font-size: 1rem;
+    }
+
+    .bd-main article .text p {
+        font-size: .875rem;
+        font-weight: 400;
+    }
+
+    .bd-main .bd-headers {
+        margin: 25px;
+    }
 }

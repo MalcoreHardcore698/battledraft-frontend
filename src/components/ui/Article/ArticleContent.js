@@ -6,8 +6,10 @@ export const ArticleContent = ({ article, tag="preview" }) => {
         <article className={`${article.type} ${tag}`}>
             <div className="image">
                 <img src={article.img} alt="Poster" />
-                {(tag === 'full') ?
-                    <Link to={`/news/${article.id}`}>{(article.type === 'video') ? 'Watch' : 'Read'}</Link>
+                {(tag !== 'full') ?
+                    <Link to={`/news/${article.id}`}>
+                        {(article.type === 'video') ? 'Watch' : 'Read'}
+                    </Link>
                 : ''}
             </div>
             <div className="text">

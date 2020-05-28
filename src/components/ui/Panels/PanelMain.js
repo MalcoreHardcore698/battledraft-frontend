@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom'
 import useScrollInfo from 'react-element-scroll-hook'
 
 import { Home } from './../Sections/SectionHome'
+import { SectionPopularChat } from '../Sections/SectionsPopularChat'
+import { SectionBestChats } from '../Sections/SectionsBestChats'
 import { ArticleOne } from './../Article/ArticleOne'
 import { ChatMessages } from './../Chat/ChatMessages'
 import { UserOffers } from './../User/UserOffers'
@@ -28,6 +30,11 @@ export const PanelMain = ({ state, games, news, offers, onNewMessage }) => {
 
                 <Route path="/offers/:gameName">
                     <UserOffers offers={offers} />
+                </Route>
+
+                <Route path="/navigator">
+                    <SectionBestChats />
+                    <SectionPopularChat />
                 </Route>
             </Switch>
         </section>

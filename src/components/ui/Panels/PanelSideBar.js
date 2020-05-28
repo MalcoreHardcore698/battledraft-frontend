@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faCompass } from '@fortawesome/free-solid-svg-icons'
 
 import { ChatLinks } from './../Chat/ChatLinks'
 
@@ -23,6 +23,12 @@ export const PanelSideBar = ({
             <div className="bd-sidebar-navigation">
                 <Link to="/" className="bd-sidebar-navigation__burger">
                     <span></span>
+                </Link>
+            </div>
+
+            <div className="bd-sidebar-navigator">
+                <Link to="/navigator" className="bd-sidebar-navigator__button">
+                    <FontAwesomeIcon icon={faCompass} />
                 </Link>
             </div>
         

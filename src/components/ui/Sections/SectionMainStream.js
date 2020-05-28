@@ -13,7 +13,18 @@ export const MainStream = ({ games, setCurrentGame }) => {
         items: 3,
         gutter: 25,
         edgePadding: 50,
-        loop: false
+        loop: false,
+        responsive: {
+            480: {
+                items: 1
+            },
+            992: {
+                items: 2
+            },
+            1299: {
+                items: 3
+            }
+        }
     }
 
     return (
