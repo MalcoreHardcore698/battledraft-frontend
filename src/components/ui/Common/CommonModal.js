@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Modal = ({ state, currentModal, setCurrentModal }) => {
+export const CommonModal = ({ state, currentModal, setCurrentModal }) => {
     switch (currentModal) {
         case 'settings':
             return (

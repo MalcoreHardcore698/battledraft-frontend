@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Auth } from './../Form/Auth'
-import { Reg } from './../Form/Reg'
+import { FormAuth } from './../Form/FormAuth'
+import { FormReg } from './../Form/FormReg'
 
-export const Content = ({ method, setAuthenticated }) => {
+export const AuthContent = ({ method, setAuthenticated }) => {
     const handlerSubmit = () => {
         setAuthenticated(true)
     }
@@ -11,14 +11,14 @@ export const Content = ({ method, setAuthenticated }) => {
     return (
         <div className={`bd-auth__content bd-block-default${(method === 'log') ? '' : ' switch'}`}>
             {(method === 'log') ?
-                <Auth
+                <FormAuth
                     method={method}
                     handler={handlerSubmit}
                 />
             : ''}
 
             {(method === 'reg') ?
-                <Reg
+                <FormReg
                     method={method}
                     handler={handlerSubmit}
                 />

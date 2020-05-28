@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { Hub } from '../ui/Hub/Hub'
+import { PageHub } from '../ui/Pages/PageHub'
 
 import {
     chooseChat,
@@ -23,4 +23,4 @@ export const HubContainer = connect(
             dispatch(newMessage(userId, chatId, message))
         }
     })
-)(Hub)
+)(PageHub)

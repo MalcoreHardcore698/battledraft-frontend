@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Switcher = ({ method, setMethod }) => {
+export const AuthSwitcher = ({ method, setMethod }) => {
     const handlerSwitcher = (e) => {
         e.preventDefault()
         setMethod(method === 'log' ? 'reg' : 'log')

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button } from './Button'
+import { Button } from './CommonButton'
 
 export const Block = ({ type, options }) => {
     return (

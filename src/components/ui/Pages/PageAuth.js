@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import { Switcher } from './Switcher'
-import { Content } from './Content'
+import { Switcher } from '../Auth/AuthSwitcher'
+import { Content } from '../Auth/AuthContent'
 
-export const Auth = ({ setAuthenticated }) => {
+export const PageAuth = ({ setAuthenticated }) => {
     const [method, setMethod] = useState('log')
 
     return (

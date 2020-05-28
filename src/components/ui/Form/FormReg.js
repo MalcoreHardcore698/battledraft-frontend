@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { BlockTitle } from './../Common/BlockTitle'
-import { InputField } from './../Common/InputField'
-import { Button } from './../Common/Button'
+import { BlockTitle } from '../Common/CommonBlockTitle'
+import { InputField } from '../Common/CommonInputField'
+import { Button } from '../Common/CommonButton'
 
 export const Reg = ({ method, handler }) => {
     return (
