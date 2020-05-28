@@ -446,6 +446,26 @@ img {
     scrollbar-width: none;
 }
 
+.bd-openchats {
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.bd-openchats::-webkit-scrollbar,
+.bd-main .bd-messages .history::-webkit-scrollbar {
+    width: 0;
+}
+
+.bd-openchats::-webkit-scrollbar-track,
+.bd-main .bd-messages .history::-webkit-scrollbar-track {
+    background: none;
+}
+
+.bd-openchats::-webkit-scrollbar-thumb,
+.bd-main .bd-messages .history::-webkit-scrollbar-thumb {
+    background: none;
+}
+
 .bd-main .bd-messages .history .message {
     display: flex;
     margin-bottom: 10px;
