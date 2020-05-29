@@ -11,7 +11,8 @@ export const PanelSideBar = ({
     state,
     setCurrentModal,
     onChooseChat,
-    onNewChat
+    onCloseChat,
+    onOpenChat
 }) => {
     const handlerSettingsModal = (e) => {
         e.preventDefault()
@@ -35,7 +36,8 @@ export const PanelSideBar = ({
             <ChatLinks
                 chats={state.user.chats}
                 onChooseChat={onChooseChat}
-                onNewChat={onNewChat}
+                onCloseChat={onCloseChat}
+                onOpenChat={onOpenChat}
             />
 
             <div className="bd-sidebar-navigation">

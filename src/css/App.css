@@ -935,6 +935,32 @@ img {
     margin: 50px 50px 0 142px;
 }
 
+.bd-chat__close {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 95;
+    top: -5px;
+    right: 15px;
+    background: #333;
+    border: 2px solid white;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: .75rem;
+    transition: all .3s ease;
+}
+
+.bd-chat__close:hover {
+    opacity: .75;
+}
+
+.bd-sidebar .bd-openchats ul li:hover .bd-chat__close {
+    display: flex;
+}
+
 .tns-inner {
     padding: 50px 0 !important;
 }

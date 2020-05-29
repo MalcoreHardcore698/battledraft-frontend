@@ -11,7 +11,7 @@ export const MainStream = ({ games, setCurrentGame }) => {
         mouseDrag: true,
         controls: false,
         items: 1,
-        gutter: 25,
+        gutter: 50,
         edgePadding: 50,
         loop: false,
         responsive: {
@@ -36,6 +36,7 @@ export const MainStream = ({ games, setCurrentGame }) => {
                         game={game}
                         color={colors[i]}
                         setCurrentGame={setCurrentGame}
+                        active={(i === 0)}
                     />
                 ))}
             </TinySlider>

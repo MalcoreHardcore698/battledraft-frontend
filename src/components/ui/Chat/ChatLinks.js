@@ -5,7 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import { ChatLink } from './ChatLink'
 
-export const ChatLinks = ({ chats, onChooseChat, onNewChat }) => {
+export const ChatLinks = ({ chats, onChooseChat, onCloseChat, onOpenChat }) => {
     return (
         <div className="bd-openchats">
             <ul className={`bd-openchats__personal`}>
@@ -14,9 +14,10 @@ export const ChatLinks = ({ chats, onChooseChat, onNewChat }) => {
                         key={chat.id}
                         chat={chat}
                         onChooseChat={onChooseChat}
+                        onCloseChat={onCloseChat}
                     />
                 )}
-                <li className="bd-chat-new" onClick={onNewChat}><FontAwesomeIcon icon={faPlus} /></li>
+                <li className="bd-chat-new" onClick={onOpenChat}><FontAwesomeIcon icon={faPlus} /></li>
             </ul>
 
             <div className="bd-break"></div>
@@ -27,9 +28,10 @@ export const ChatLinks = ({ chats, onChooseChat, onNewChat }) => {
                         key={chat.id}
                         chat={chat}
                         onChooseChat={onChooseChat}
+                        onCloseChat={onCloseChat}
                     />
                 )}
-                <li className="bd-chat-new" onClick={onNewChat}><FontAwesomeIcon icon={faPlus} /></li>
+                <li className="bd-chat-new" onClick={onOpenChat}><FontAwesomeIcon icon={faPlus} /></li>
             </ul>
         </div>
     )

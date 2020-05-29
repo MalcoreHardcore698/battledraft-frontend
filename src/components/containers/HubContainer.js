@@ -4,7 +4,8 @@ import { PageHub } from '../ui/Pages/PageHub'
 
 import {
     chooseChat,
-    newChat,
+    openChat,
+    closeChat,
     newMessage
 } from './../../utils/actions'
 
@@ -16,8 +17,11 @@ export const HubContainer = connect(
         onChooseChat: (id) => {
             dispatch(chooseChat(id))
         },
-        onNewChat: () => {
-            dispatch(newChat())
+        onOpenChat: () => {
+            dispatch(openChat())
+        },
+        onCloseChat: () => {
+            dispatch(closeChat())
         },
         onNewMessage: (userId, chatId, message) => {
             dispatch(newMessage(userId, chatId, message))

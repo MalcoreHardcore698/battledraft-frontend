@@ -1,6 +1,7 @@
 export default {
     SIGN_IN: 'SIGN_IN',
     CHOOSE_CHAT: 'CHOOSE_CHAT',
-    NEW_CHAT: 'NEW_CHAT',
+    OPEN_CHAT: 'OPEN_CHAT',
+    CLOSE_CHAT: 'CLOSE_CHAT',
     NEW_MESSAGE: 'NEW_MESSAGE'
 }

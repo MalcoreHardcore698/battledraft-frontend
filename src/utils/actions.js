@@ -16,9 +16,15 @@ export function chooseChat(chat) {
     }
 }
 
-export function newChat() {
+export function openChat() {
     return {
-        type: C.NEW_CHAT
+        type: C.OPEN_CHAT
+    }
+}
+
+export function closeChat() {
+    return {
+        type: C.CLOSE_CHAT
     }
 }
 

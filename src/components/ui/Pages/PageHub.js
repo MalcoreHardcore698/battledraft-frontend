@@ -4,7 +4,7 @@ import { PanelMain } from './../Panels/PanelMain'
 import { PanelSideBar } from './../Panels/PanelSideBar'
 import { CommonModal } from './../Common/CommonModal'
 
-export const PageHub = ({ state, onChooseChat, onNewMessage }) => {
+export const PageHub = ({ state, onChooseChat, onCloseChat, onOpenChat, onNewMessage }) => {
     const [currentModal, setCurrentModal] = useState(null)
     const [backgroundColor, setBackgroundColor] = useState(null)
 
@@ -48,6 +48,8 @@ export const PageHub = ({ state, onChooseChat, onNewMessage }) => {
                     currentModal={currentModal}
                     setCurrentModal={setCurrentModal}
                     onChooseChat={onChooseChat}
+                    onCloseChat={onCloseChat}
+                    onOpenChat={onOpenChat}
                 />
                 
                 <PanelMain
