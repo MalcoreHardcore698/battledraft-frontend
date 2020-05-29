@@ -34,7 +34,8 @@ export const PanelSideBar = ({
             </div>
         
             <ChatLinks
-                chats={state.user.chats}
+                state={state}
+                setCurrentModal={setCurrentModal}
                 onChooseChat={onChooseChat}
                 onCloseChat={onCloseChat}
                 onOpenChat={onOpenChat}

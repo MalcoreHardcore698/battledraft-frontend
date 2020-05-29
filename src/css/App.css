@@ -15,12 +15,15 @@
 }
 
 /* Tag rules */
-body {
+html, body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+body {
     font: 1rem 'Roboto', sans-serif;
     line-height: 1.5;
-    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, a, ul, li, p {
@@ -67,9 +70,10 @@ img {
 }
 
 /* Class rules */
-.bd-app {
+#root, .bd-app {
     position: relative;
     background: #484848;
+    min-height: 100vh;
 }
 
 .bd-auth {
@@ -151,7 +155,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 250;
@@ -177,6 +181,21 @@ img {
     background: white;
     border-radius: var(--border-radius);
     padding: 25px;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    max-width: 525px;
+    scrollbar-width: none;
+}
+
+.bd-modal .bd-modal__body h2 {
+    text-align: center;
+}
+
+.bd-modal__body-groupchats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    padding: 25px 0;
 }
 
 .bd-sidebar {
@@ -361,6 +380,18 @@ img {
     border-bottom: 10px solid #612b46;
 }
 
+.bd-main__mainstream-block.inactive {
+    opacity: .25;
+    cursor: default;
+}
+
+.bd-main__mainstream-block.inactive,
+.bd-main__mainstream-block.inactive:hover .content,
+.bd-main__mainstream-block.inactive:hover .content p {
+    transform: none;
+    box-shadow: none;
+}
+
 .bd-main__mainstream-block .content {
     display: flex;
     flex-direction: column;
@@ -490,6 +521,8 @@ img {
     border-radius: 10px;
     background: #f5f5f5;
     width: 65%;
+    word-break: break-all;
+    white-space: normal;
 }
 
 .bd-main .bd-messages .history .message.my p {
@@ -677,6 +710,7 @@ img {
 
 .bd-sidefeed__popular .block,
 .bd-sidefeed__groupchats .block {
+    display: block;
     background: white;
     margin: 25px 0;
     padding: 15px;
@@ -695,6 +729,10 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.bd-sidebar .bd-openchats ul li {
+    position: relative;
 }
 
 .bd-sidebar .bd-openchats ul li a img,
@@ -959,6 +997,7 @@ img {
 
 .bd-sidebar .bd-openchats ul li:hover .bd-chat__close {
     display: flex;
+    color: white;
 }
 
 .tns-inner {
@@ -1012,6 +1051,20 @@ img {
         transition: all .3s ease;
     }
 
+    .bd-sidebar .bd-openchats ul li a.red.active::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        border: 2px solid var(--accent-red);
+        opacity: .45;
+        transition: all .3s ease;
+    }
+
     .bd-sidebar .bd-openchats ul li a.purple.active::before {
         content: '';
         display: block;
@@ -1043,7 +1096,7 @@ img {
 
     .bd-main__mainstream {
         margin: 0 0 0 64px;
-        width: calc(100vw - 64px);
+        width: calc(100vw - 80px);
     }
 
     .bd-main__hotnews {
@@ -1057,6 +1110,10 @@ img {
     .bd-main article.full {
         margin: 25px 25px 15px 90px;
     }
+
+    .bd-chat__close {
+        right: 5px;
+    }
 }
 
 @media only screen and (max-width: 998px) {
@@ -1065,6 +1122,7 @@ img {
         margin-right: 25px;
     }
 
+    .bd-main article.full,
     .bd-main__hotnews article {
         grid-template-columns: 1fr;
         margin: 25px;
@@ -1115,6 +1173,14 @@ img {
     .bd-main .bd-messages,
     .bd-main article.full {
         margin: 25px 25px 25px 89px;
+    }
+
+    .bd-modal .bd-modal__body {
+        max-width: 320px;
+    }
+
+    .bd-modal__body-groupchats {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { MainStreamBlock } from '../MainStream/MainStreamBlock'
+import { MainStreamSlide } from '../MainStream/MainStreamSlide'
 
 import TinySlider from 'tiny-slider-react'
 
-export const MainStream = ({ games, setCurrentGame }) => {
+export const MainStream = ({ state, setCurrentGame }) => {
     const colors = ['blue', 'orange', 'red', 'purple']
     const settings = {
         nav: false,
@@ -30,9 +30,10 @@ export const MainStream = ({ games, setCurrentGame }) => {
     return (
         <aside className="bd-main__mainstream">
             <TinySlider settings={settings}>
-                {games.map((game, i) => (
-                    <MainStreamBlock
+                {state.games.map((game, i) => (
+                    <MainStreamSlide
                         key={i}
+                        state={state}
                         game={game}
                         color={colors[i]}
                         setCurrentGame={setCurrentGame}

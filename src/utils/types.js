@@ -1,5 +1,7 @@
 export default {
-    SIGN_IN: 'SIGN_IN',
+    USER_AUTH: 'USER_AUTH',
+    USER_REG: 'USER_REG',
+
     CHOOSE_CHAT: 'CHOOSE_CHAT',
     OPEN_CHAT: 'OPEN_CHAT',
     CLOSE_CHAT: 'CLOSE_CHAT',

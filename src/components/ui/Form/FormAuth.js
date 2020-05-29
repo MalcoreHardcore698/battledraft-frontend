@@ -5,7 +5,7 @@ import { InputField } from '../Common/CommonInputField'
 import { Checkbox } from '../Common/CommonCheckbox'
 import { Button } from '../Common/CommonButton'
 
-export const Auth = ({ method, handler }) => {
+export const FormAuth = ({ method, handler }) => {
     const [checked, setCheckbox] = useState(false)
 
     return (

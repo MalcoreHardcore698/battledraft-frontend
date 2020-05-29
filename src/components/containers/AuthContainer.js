@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 
-import { Auth } from '../ui/Auth/Auth'
+import { PageAuth } from './../ui/Pages/PageAuth'
 
 import {
-    signIn
+    authUser,
+    regUser
 } from './../../utils/actions'
 
 export const AuthContainer = connect(
@@ -11,8 +12,16 @@ export const AuthContainer = connect(
         state
     }),
     dispatch => ({
-        onSignIn: (login, password) => {
-            dispatch(signIn(login, password))
+        onAuthUser: (login, password) => {
+            const user = {
+                id: 0,
+                chats: []
+            }
+
+            dispatch(authUser(user))
+        },
+        onRegUser: (login, password, email, phone) => {
+            dispatch(regUser(login, password, email, phone))
         }
     })
-)(Auth)
+)(PageAuth)

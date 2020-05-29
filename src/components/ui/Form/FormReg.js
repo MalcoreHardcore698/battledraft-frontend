@@ -4,7 +4,7 @@ import { BlockTitle } from '../Common/CommonBlockTitle'
 import { InputField } from '../Common/CommonInputField'
 import { Button } from '../Common/CommonButton'
 
-export const Reg = ({ method, handler }) => {
+export const FormReg = ({ method, handler }) => {
     return (
         <form className="bd-auth__registration">
             <BlockTitle title="Registration" />

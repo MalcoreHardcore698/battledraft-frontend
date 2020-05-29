@@ -3,39 +3,34 @@ import C from './types'
 
 export function userReducer(state = {}, action) {
     switch (action.type) {
-        case C.SIGN_IN:
+        case C.USER_AUTH:
             return {
                 ...state,
-                isAuthenticated: true,
-                login: action.payload.login,
-                password: action.payload.password
+                id: action.payload.user.id,
+                chats: action.payload.user.chats
             }
         case C.CHOOSE_CHAT:
             return {
                 ...state,
                 activeChat: action.payload
             }
-        case C.NEW_CHAT:
-            return state
-        case C.NEW_MESSAGE:
+        case C.OPEN_CHAT:
             return {
                 ...state,
                 chats: [
-                    ...state.chats.map(chat =>
-                        (chat.id === action.payload.chatId) ? ({
-                            ...chat,
-                            messages: [
-                                ...chat.messages,
-                                {
-                                    userId: action.payload.userId,
-                                    avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
-                                    content: action.payload.message,
-                                    date: new Date()
-                                }
-                            ]
-                        }) : ({
-                            ...chat
-                        })
+                    ...state.chats,
+                    {
+                        id: action.payload.chats.find(chat => chat.id === action.payload.chatId).id,
+                        type: action.payload.chats.find(chat => chat.id === action.payload.chatId).type
+                    }
+                ]
+            }
+        case C.CLOSE_CHAT:
+            return {
+                ...state,
+                chats: [
+                    ...state.chats.filter(chat =>
+                        (chat.id !== action.payload.chatId)
                     )
                 ]
             }
@@ -44,6 +39,41 @@ export function userReducer(state = {}, action) {
     }
 }
 
+export function gamesReducer(state = {}, action) {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
+export function chatsReducer(state = [], action) {
+    switch (action.type) {
+        case C.NEW_MESSAGE:
+            return [
+                ...state.map(chat =>
+                    (chat.id === action.payload.chatId) ? ({
+                        ...chat,
+                        messages: [
+                            ...chat.messages,
+                            {
+                                userId: action.payload.userId,
+                                avatar: 'https://vignette.wikia.nocookie.net/gwent/images/e/e7/Geralt_Intoxicated_Avatar.png/revision/latest/scale-to-width-down/340?cb=20180114003913',
+                                content: action.payload.message,
+                                date: new Date()
+                            }
+                        ]
+                    }) : ({
+                        ...chat
+                    })
+                )
+            ]
+        default:
+            return state
+    }
+}
+
 export const reducers = combineReducers({
-    user: userReducer
+    user: userReducer,
+    games: gamesReducer,
+    chats: chatsReducer
 })

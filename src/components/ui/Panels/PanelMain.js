@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import { SectionHome } from './../Sections/SectionHome'
 import { ArticleOne } from './../Article/ArticleOne'
@@ -7,12 +7,12 @@ import { UserOffers } from './../User/UserOffers'
 import { SectionChat } from './../Sections/SectionChat'
 import { SectionNavigator } from './../Sections/SectionNavigator'
 
-export const PanelMain = ({ state, games, news, offers, onNewMessage }) => {
+export const PanelMain = ({ state, news, offers, onChooseChat, onOpenChat, onNewMessage }) => {
     return (
         <section className="bd-main">
             <Switch>
                 <Route exact path="/">
-                    <SectionHome games={games} news={news} />
+                    <SectionHome state={state} news={news} />
                 </Route>
 
                 <Route path="/news/:newsId">
@@ -28,8 +28,10 @@ export const PanelMain = ({ state, games, news, offers, onNewMessage }) => {
                 </Route>
 
                 <Route path="/navigator">
-                    <SectionNavigator />
+                    <SectionNavigator state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
                 </Route>
+
+                <Redirect to="/" />
             </Switch>
         </section>
     )

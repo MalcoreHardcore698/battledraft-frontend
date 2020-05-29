@@ -17,11 +17,11 @@ export const HubContainer = connect(
         onChooseChat: (id) => {
             dispatch(chooseChat(id))
         },
-        onOpenChat: () => {
-            dispatch(openChat())
+        onOpenChat: (chatId, chats) => {
+            dispatch(openChat(chatId, chats))
         },
-        onCloseChat: () => {
-            dispatch(closeChat())
+        onCloseChat: (chat) => {
+            dispatch(closeChat(chat))
         },
         onNewMessage: (userId, chatId, message) => {
             dispatch(newMessage(userId, chatId, message))

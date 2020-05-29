@@ -15,6 +15,11 @@ export const ArticleOne = ({ news }) => {
             </div>
 
             <ArticleContent article={article} tag="full" />
+
+            <div className="bd-headers">
+                <div className="empty"></div>
+                <Link to="/">Back</Link>
+            </div>
         </React.Fragment>
     )
 }

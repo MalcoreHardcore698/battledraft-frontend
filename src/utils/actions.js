@@ -1,10 +1,19 @@
 import C from './types'
 
-export function signIn(login, password) {
+export function authUser(user) {
     return {
-        type: C.SIGN_IN,
+        type: C.USER_AUTH,
         payload: {
-            login, password
+            user
+        }
+    }
+}
+
+export function regUser(user) {
+    return {
+        type: C.USER_REG,
+        payload: {
+            user
         }
     }
 }
@@ -16,15 +25,21 @@ export function chooseChat(chat) {
     }
 }
 
-export function openChat() {
+export function openChat(chatId, chats) {
     return {
-        type: C.OPEN_CHAT
+        type: C.OPEN_CHAT,
+        payload: {
+            chatId, chats
+        }
     }
 }
 
-export function closeChat() {
+export function closeChat(chatId) {
     return {
-        type: C.CLOSE_CHAT
+        type: C.CLOSE_CHAT,
+        payload: {
+            chatId
+        }
     }
 }
 

@@ -9,16 +9,22 @@ import { ChatMessageOne } from './ChatMessageOne'
 export const ChatMessages = ({ state, onNewMessage }) => {
     const [chat, setChat] = useState(null)
     const [message, setMessage] = useState(null)
+    const historyRef = useRef(null)
     const inputRef = useRef(null)
     const { chatId } = useParams()
 
     const handlerSubmit = (e) => {
         e.preventDefault()
         if (message) {
-            onNewMessage(state.id, chat.id, message)
+            onNewMessage(state.user.id, chat.id, message)
             setMessage(null)
             inputRef.current.value = ''
             inputRef.current.focus()
+
+            const historyEl = historyRef.current
+            if (historyEl) {
+                historyEl.scrollTop = historyEl.scrollHeight
+            }
         }
     }
 
@@ -33,15 +39,15 @@ export const ChatMessages = ({ state, onNewMessage }) => {
     }
 
     useEffect(() => {
-        const chat = state.user.chats.find(chat => chat.id === +chatId)
+        const chat = state.chats.find(chat => chat.id === +chatId)
         setChat(chat)
-    }, [state.user.chats, chatId])
+    }, [state.chats, chatId])
     
     return (
         <React.Fragment>
             {(!chat || chat.messages.length === 0) ?
                 <p className="history no-messages">No Messages</p> :
-                <ul className="history">
+                <ul ref={historyRef} className="history">
                     {(chat.messages.map((message, i) =>
                         <ChatMessageOne key={i} message={message} userId={state.user.id} />
                     ))}
