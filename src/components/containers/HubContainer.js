@@ -6,6 +6,7 @@ import {
     chooseChat,
     openChat,
     closeChat,
+    addMember,
     newMessage
 } from './../../utils/actions'
 
@@ -22,6 +23,9 @@ export const HubContainer = connect(
         },
         onCloseChat: (chat) => {
             dispatch(closeChat(chat))
+        },
+        onAddMember: (chatId, user) => {
+            dispatch(addMember(chatId, user))
         },
         onNewMessage: (userId, chatId, message) => {
             dispatch(newMessage(userId, chatId, message))

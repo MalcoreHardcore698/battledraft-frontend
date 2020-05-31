@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWallet } from '@fortawesome/free-solid-svg-icons'
+
 import { ArticleContent } from './ArticleContent'
 
 export const ArticleOne = ({ news }) => {
@@ -9,16 +12,16 @@ export const ArticleOne = ({ news }) => {
     
     return (
         <React.Fragment>
-            <div className="bd-headers">
-                <h2 className="bd-title">News</h2>
-                <Link to="/">Back</Link>
+            <div className="bd-title-group">
+                <h2><FontAwesomeIcon icon={faWallet} />Новости</h2>
+                <Link to="/" className="bd-action">Back</Link>
             </div>
 
             <ArticleContent article={article} tag="full" />
 
-            <div className="bd-headers">
+            <div className="bd-title-group">
                 <div className="empty"></div>
-                <Link to="/">Back</Link>
+                <Link to="/" className="bd-action">Back</Link>
             </div>
         </React.Fragment>
     )

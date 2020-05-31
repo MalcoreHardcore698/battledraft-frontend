@@ -67,6 +67,23 @@ export function chatsReducer(state = [], action) {
                     })
                 )
             ]
+        case C.ADD_MEMBER:
+            return [
+                ...state.map(chat => (chat.id === action.payload.chatId) ? ({
+                    ...chat,
+                    members: [
+                        ...chat.members,
+                        {
+                            id: action.payload.user.id,
+                            name: action.payload.user.name,
+                            avatar: action.payload.user.avatar
+                        }
+                    ]
+                    }) : ({
+                        ...chat
+                    })
+                )
+            ]
         default:
             return state
     }

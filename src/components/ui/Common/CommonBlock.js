@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Button } from './CommonButton'
 
-export const Block = ({ type, options }) => {
+export const CommonBlock = ({ type, options }) => {
     return (
         <div className="bd-block-default">
             {(type === 'button') ?

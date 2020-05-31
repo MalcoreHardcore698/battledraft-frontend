@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
-export const MainStreamBlock = ({ state, game, color, active, setCurrentModal, onOpenChat }) => {
+export const MainStreamBlock = ({ state, game, color, active, setCurrentModal, onOpenChat, onAddMember }) => {
     const [inactive, setInactive] = useState(false)
 
     const handlerOpenChat = () => {
@@ -10,6 +10,7 @@ export const MainStreamBlock = ({ state, game, color, active, setCurrentModal, o
             setInactive(true)
         } else {
             onOpenChat(game.id, state.chats)
+            onAddMember(game.id, state.user)
             setCurrentModal(null)
         }
     }
@@ -23,12 +24,12 @@ export const MainStreamBlock = ({ state, game, color, active, setCurrentModal, o
     return (
         <Link
             to={`/chats/${game.id}`}
-            className={`bd-main__mainstream-block ${color}${active ? ' active' : ''}${inactive ? ' inactive' : ''}`}
+            className={`bd-main__mainstream-block ${game.color}${active ? ' active' : ''}${inactive ? ' inactive' : ''}`}
             onClick={handlerOpenChat}
         >
             <div className="content">
                 <img src={game.img} alt="Game 1" />
-                <p>{game.name}<span>{game.slogan}</span></p>
+                <p>{game.title}<span>{game.slogan}</span></p>
             </div>
         </Link>
     )

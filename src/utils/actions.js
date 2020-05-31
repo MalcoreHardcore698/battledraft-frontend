@@ -43,6 +43,15 @@ export function closeChat(chatId) {
     }
 }
 
+export function addMember(chatId, user) {
+    return {
+        type: C.ADD_MEMBER,
+        payload: {
+            chatId, user
+        }
+    }
+}
+
 export function newMessage(userId, chatId, message) {
     return {
         type: C.NEW_MESSAGE,

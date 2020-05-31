@@ -1,21 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import storeFactory from './storeFactory'
-
-import './index.css'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from '@apollo/react-hooks'
 
 import { App } from './components/App'
 
 import * as serviceWorker from './serviceWorker'
+import storeFactory from './storeFactory'
+import './index.css'
 
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql',
+})
 const store = storeFactory
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

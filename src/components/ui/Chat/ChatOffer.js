@@ -1,11 +1,12 @@
 import React from 'react'
 
 export const ChatOffer = ({ offer }) => {
+    if (!offer.user) return null
     return (
         <li>
             <div className="title">
-                <img src="https://vignette.wikia.nocookie.net/gwent/images/7/75/CirALt.png/revision/latest?cb=20170830181650" alt="Player" />
-                <h5>{offer.nickname}</h5>
+                <img src={offer.user.avatar} alt={offer.user.name} />
+                <h5>{offer.user.name}</h5>
             </div>
             <div className="message">
                 <p>{offer.message}</p>

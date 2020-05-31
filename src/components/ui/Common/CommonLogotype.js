@@ -1,17 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 
-import Logo from './../../img/logo.png'
+import Logo from './../../../img/logo.svg'
 
-export const Logotype = ({ isAuthenticated, setTitleOfPage }) => {
+export const CommonLogotype = () => {
     return (
-        <div className="bd-headline__logotype">
-            <NavLink
-                to="/"
-                onClick={() => setTitleOfPage((!isAuthenticated) ? 'Authentication' : 'Tournaments')}
-            >
-                <img src={Logo} alt="Logotype" />
-            </NavLink>
+        <div className="bd-logotype">
+            <img src={Logo} alt="Logotype" />
         </div>
     )
 }

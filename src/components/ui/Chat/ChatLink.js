@@ -17,6 +17,7 @@ export const ChatLink = ({ chat, onChooseChat, onCloseChat }) => {
             </NavLink>
             <NavLink to={`/chats/${chat.id}`} activeclass="active" className={classes.join(' ')} onClick={() => onChooseChat(chat)}>
                 <img src={chat.icon} alt="Icon Game" />
+                <p>{chat.title}</p>
             </NavLink>
         </li>
     )

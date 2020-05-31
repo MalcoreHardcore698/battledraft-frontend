@@ -1,13 +1,13 @@
 import React from 'react'
 
-export const MainStreamSlide = ({ state, game, color, active }) => {
+export const MainStreamSlide = ({ state, game, active }) => {
     return (
         <div
-            className={`bd-main__mainstream-block ${color}${active ? ' active' : ''}`}
+            className={`bd-main__mainstream-block slide ${game.color}${active ? ' active' : ''}`}
         >
             <div className="content">
                 <img src={game.img} alt="Game 1" />
-                <p>{game.name}<span>{game.slogan}</span></p>
+                <p>{game.title}<span>{game.slogan}</span></p>
             </div>
         </div>
     )

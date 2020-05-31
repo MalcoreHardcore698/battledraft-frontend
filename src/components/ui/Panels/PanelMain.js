@@ -1,11 +1,13 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import { SectionHome } from './../Sections/SectionHome'
-import { ArticleOne } from './../Article/ArticleOne'
-import { UserOffers } from './../User/UserOffers'
-import { SectionChat } from './../Sections/SectionChat'
+import { SectionProfile } from './../Sections/SectionProfile'
 import { SectionNavigator } from './../Sections/SectionNavigator'
+import { SectionTournaments } from './../Sections/SectionTournaments'
+import { SectionArticle } from './../Sections/SectionArticle'
+import { SectionOffer } from './../Sections/SectionOffer'
+import { SectionChat } from './../Sections/SectionChat'
 
 export const PanelMain = ({ state, news, offers, onChooseChat, onOpenChat, onNewMessage }) => {
     return (
@@ -14,9 +16,21 @@ export const PanelMain = ({ state, news, offers, onChooseChat, onOpenChat, onNew
                 <Route exact path="/">
                     <SectionHome state={state} news={news} />
                 </Route>
+                
+                <Route path="/profile">
+                    <SectionProfile state={state} />
+                </Route>
+
+                <Route path="/navigator">
+                    <SectionNavigator state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
+                </Route>
+                
+                <Route path="/tournaments">
+                    <SectionTournaments state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
+                </Route>
 
                 <Route path="/news/:newsId">
-                    <ArticleOne news={news} />
+                    <SectionArticle news={news} />
                 </Route>
 
                 <Route path="/chats/:chatId">
@@ -24,14 +38,8 @@ export const PanelMain = ({ state, news, offers, onChooseChat, onOpenChat, onNew
                 </Route>
 
                 <Route path="/offers/:gameName">
-                    <UserOffers offers={offers} />
+                    <SectionOffer offers={offers} />
                 </Route>
-
-                <Route path="/navigator">
-                    <SectionNavigator state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
-                </Route>
-
-                <Redirect to="/" />
             </Switch>
         </section>
     )

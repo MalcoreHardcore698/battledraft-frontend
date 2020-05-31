@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
 
-import { BlockTitle } from '../Common/CommonBlockTitle'
-import { InputField } from '../Common/CommonInputField'
-import { Checkbox } from '../Common/CommonCheckbox'
-import { Button } from '../Common/CommonButton'
+import { CommonBlockTitle } from '../Common/CommonBlockTitle'
+import { CommonInputField } from '../Common/CommonInputField'
+import { CommonCheckbox } from '../Common/CommonCheckbox'
 
-export const FormAuth = ({ method, handler }) => {
+export const FormAuth = () => {
     const [checked, setCheckbox] = useState(false)
 
     return (
-        <form className="bd-auth__authentication">
-            <BlockTitle title="Authentication" />
+        <div className="bd-auth__content log">
+            <CommonBlockTitle title="Авторизация" />
 
-            <InputField name="login" label="Login" type="text" />
-            <InputField name="auth-password" label="Password" type="password" />
-            <Checkbox label="Remember Me" checked={checked} setCheckbox={setCheckbox} />
-
-            <Button
-                text={(method === 'log') ? 'Sign In' : 'Sign Up'}
-                type="accept"
-                handler={handler}
-            />
-        </form>
+            <CommonInputField name="login" label="Логин" type="text" />
+            <CommonInputField name="auth-password" label="Пароль" type="password" />
+            <CommonCheckbox label="Запомнить меня" checked={checked} setCheckbox={setCheckbox} />
+        </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { CommonLogotype } from './../Common/CommonLogotype'
 import { AuthSwitcher } from './../Auth/AuthSwitcher'
 import { AuthContent } from './../Auth/AuthContent'
 
@@ -8,6 +9,7 @@ export const PageAuth = ({ setAuthenticated, onAuthUser, onRegUser }) => {
 
     return (
         <div className="bd-auth bd-center">
+            <CommonLogotype />
             <AuthSwitcher
                 method={method}
                 setMethod={setMethod}

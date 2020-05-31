@@ -2,9 +2,18 @@ import React, { useState, useEffect } from 'react'
 
 import { PanelMain } from './../Panels/PanelMain'
 import { PanelSideBar } from './../Panels/PanelSideBar'
+import { PanelSideFeed } from './../Panels/PanelSideFeed'
 import { CommonModal } from './../Common/CommonModal'
 
-export const PageHub = ({ state, onChooseChat, onCloseChat, onOpenChat, onNewMessage }) => {
+export const PageHub = ({
+    state,
+    setAuthenticated,
+    onChooseChat,
+    onCloseChat,
+    onOpenChat,
+    onAddMember,
+    onNewMessage
+}) => {
     const [currentModal, setCurrentModal] = useState(null)
 
     const news = [
@@ -31,7 +40,7 @@ export const PageHub = ({ state, onChooseChat, onCloseChat, onOpenChat, onNewMes
         if (currentModal) {
             document.body.style.overflow = 'hidden'
         } else {
-            document.body.style.overflow = 'auto'
+            document.body.style.overflow = 'initial'
         }
     }, [currentModal]);
 
@@ -55,12 +64,18 @@ export const PageHub = ({ state, onChooseChat, onCloseChat, onOpenChat, onNewMes
                     onOpenChat={onOpenChat}
                     onNewMessage={onNewMessage}
                 />
+
+                <PanelSideFeed
+                    state={state}
+                />
                 
                 <CommonModal
                     state={state}
                     currentModal={currentModal}
                     setCurrentModal={setCurrentModal}
+                    setAuthenticated={setAuthenticated}
                     onOpenChat={onOpenChat}
+                    onAddMember={onAddMember}
                 />
             </div>
         </div>

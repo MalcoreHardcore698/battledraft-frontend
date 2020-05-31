@@ -7,8 +7,8 @@ export const AuthSwitcher = ({ method, setMethod }) => {
     }
 
     return (
-        <div className="bd-auth__switcher bd-block-default">
-            <p>Switch</p>
+        <div className="bd-auth__switcher">
+            <p>{(method === 'log') ? 'У меня нет таккаунта' : 'У меня есть аккаунт'}</p>
             <button onClick={handlerSwitcher}>
                 <span className={(method === 'log' ? 'not-switch' : 'switch')}></span>
             </button>

@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { SectionPopularChat } from '../Sections/SectionPopularChat'
-import { SectionBestChats } from '../Sections/SectionBestChats'
+import { SectionPopularHub } from '../Sections/SectionPopularHub'
+import { SectionOffers } from './SectionOffers'
 
 export const SectionNavigator = ({ state, onOpenChat }) => {
     return (
         <div className="bd-navigator">
-            <SectionBestChats state={state} onOpenChat={onOpenChat} />
-            <SectionPopularChat state={state} onOpenChat={onOpenChat} />
+            <SectionOffers state={state} onOpenChat={onOpenChat} />
+            <SectionPopularHub state={state} onOpenChat={onOpenChat} />
         </div>
     )
 }

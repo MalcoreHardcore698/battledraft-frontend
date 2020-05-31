@@ -5,5 +5,6 @@ export default {
     CHOOSE_CHAT: 'CHOOSE_CHAT',
     OPEN_CHAT: 'OPEN_CHAT',
     CLOSE_CHAT: 'CLOSE_CHAT',
+    ADD_MEMBER: 'ADD_MEMBER',
     NEW_MESSAGE: 'NEW_MESSAGE'
 }

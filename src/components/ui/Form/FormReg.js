@@ -1,25 +1,18 @@
 import React from 'react'
 
-import { BlockTitle } from '../Common/CommonBlockTitle'
-import { InputField } from '../Common/CommonInputField'
-import { Button } from '../Common/CommonButton'
+import { CommonBlockTitle } from '../Common/CommonBlockTitle'
+import { CommonInputField } from '../Common/CommonInputField'
 
-export const FormReg = ({ method, handler }) => {
+export const FormReg = () => {
     return (
-        <form className="bd-auth__registration">
-            <BlockTitle title="Registration" />
+        <div className="bd-auth__content reg">
+            <CommonBlockTitle title="Регистрация" />
             
-            <InputField name="login" label="Login" type="text" />
-            <InputField name="reg-password" label="Password" type="password" />
-            <InputField name="reg-repeat-password" label="Repeat password" type="password" />
-            <InputField name="phone" label="Phone" type="tel" />
-            <InputField name="email" label="Email" type="email" />
-
-            <Button
-                text={(method === 'log') ? 'Sign In' : 'Sign Up'}
-                type="accept"
-                handler={handler}
-            />
-        </form>
+            <CommonInputField name="login" label="Логин" type="text" />
+            <CommonInputField name="reg-password" label="Пароль" type="password" />
+            <CommonInputField name="reg-repeat-password" label="Повторите пароль" type="password" />
+            <CommonInputField name="phone" label="Телефон" type="tel" />
+            <CommonInputField name="email" label="Электронная почта" type="email" />
+        </div>
     )
 }

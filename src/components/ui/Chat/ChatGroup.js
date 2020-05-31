@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const ChatGroup = ({ state, chat, chats, onOpenChat }) => {
+import { ChatOffers } from './ChatOffers'
+
+export const ChatGroup = ({ state, chat, chats, offers, onOpenChat }) => {
     if (!chat) return null
 
     const handlerChat = () => {
@@ -11,19 +13,24 @@ export const ChatGroup = ({ state, chat, chats, onOpenChat }) => {
     }
 
     return (
-        <Link to={`/chats/${chat.id}`} className="block" onClick={handlerChat}>
-            <div className="title">
-                <img src={chat.icon} alt="Icon Game" />
-                <ul>
-                    <li><img src="https://vignette.wikia.nocookie.net/gwent/images/7/75/CirALt.png/revision/latest?cb=20170830181650" alt="Player 1" /></li>
-                    <li><img src="https://vignette.wikia.nocookie.net/gwent/images/7/75/CirALt.png/revision/latest?cb=20170830181650" alt="Player 2" /></li>
-                    <li>{chat.members}</li>
-                </ul>
-            </div>
-            <div className="description">
-                <h3>{chat.title}</h3>
-                <p>Strategic Battle Royal</p>
-            </div>
-        </Link>
+        <div className="block">
+            <Link to={`/chats/${chat.id}`}  onClick={handlerChat}>
+                <div className="title">
+                    <img src={chat.icon} alt="Icon Game" />
+                    <ul>
+                        {(chat.members) ? chat.members.map(member =>
+                            <li><img src={member.avatar} alt={`${member.name}`} /></li>
+                        ) : ''}
+                        <li className="bd-clearfix">{chat.members.length}</li>
+                    </ul>
+                </div>
+                <div className="description">
+                    <h3>{chat.title}</h3>
+                    <p>Strategic Battle Royal</p>
+                </div>
+            </Link>
+
+            <ChatOffers offers={offers} />
+        </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { FormAuth } from './../Form/FormAuth'
 import { FormReg } from './../Form/FormReg'
+import { CommonButton } from '../Common/CommonButton'
 
 export const AuthContent = ({ method, setAuthenticated, onAuthUser, onRegUser }) => {
     const handlerSubmit = (e) => {
@@ -19,20 +20,15 @@ export const AuthContent = ({ method, setAuthenticated, onAuthUser, onRegUser })
     }
 
     return (
-        <div className={`bd-auth__content bd-block-default${(method === 'log') ? '' : ' switch'}`}>
-            {(method === 'log') ?
-                <FormAuth
-                    method={method}
-                    handler={handlerSubmit}
-                />
-            : ''}
+        <form className={`bd-auth__form ${(method === 'log') ? '' : ' switch'}`}>
+            {(method === 'log') ? <FormAuth method={method} /> : ''}
+            {(method === 'reg') ? <FormReg method={method} /> : ''}
 
-            {(method === 'reg') ?
-                <FormReg
-                    method={method}
-                    handler={handlerSubmit}
-                />
-            : ''}
-        </div>
+            <CommonButton
+                text={(method === 'log') ? 'Войти' : 'Зарегистрироваться'}
+                type="accept"
+                handler={handlerSubmit}
+            />
+        </form>
     )
 }

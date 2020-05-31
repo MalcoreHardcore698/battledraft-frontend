@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const InputField = ({ name, label, type }) => {
+export const CommonInputField = ({ name, label, type }) => {
     return (
         <div className="bd-inputfield">
             <label htmlFor={name}>{label}</label>

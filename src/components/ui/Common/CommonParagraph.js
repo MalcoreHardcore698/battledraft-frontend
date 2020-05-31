@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Paragraph = ({ text }) => {
+export const CommonParagraph = ({ text }) => {
     return (
         <p>{text}</p>
     )
