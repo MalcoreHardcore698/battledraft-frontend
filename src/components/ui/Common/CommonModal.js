@@ -1,48 +1,35 @@
 import React, { useState } from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
 import { CommonBlockTitle } from './CommonBlockTitle'
 import { CommonInputField } from './CommonInputField'
 import { CommonCheckbox } from './CommonCheckbox'
-import { MainStreamBlock } from './../MainStream/MainStreamBlock'
+import { CommonFetchFailure } from './../Common/CommonFetchFailure'
+import { authenticateUser, closeModal } from './../../../utils/actions'
 
-export const CommonModal = ({
-    state,
-    currentModal,
-    setCurrentModal,
-    setAuthenticated,
-    onOpenChat,
-    onAddMember
-}) => {
+export const CommonModal = () => {
     const [checked, setCheckbox] = useState(true)
+    const content = useSelector(state => state)
+    const dispatch = useDispatch()
 
     const handlerSignOut = (e) => {
-        setAuthenticated(false)
+        dispatch(authenticateUser(null))
+        dispatch(closeModal(content.modal.key, null))
         localStorage.setItem('isAuthenticated', 'false')
     }
 
-    switch (currentModal) {
-        case 'groupchats':
+    switch (content.modal.key) {
+        case 'new-group-chat':
             return (
                 <div className="bd-modal">
                     <div
                         className="bd-modal__background"
-                        onClick={() => setCurrentModal(null)}
+                        onClick={() => dispatch(closeModal(content.modal.key, null))}
                     ></div>
                     <div className="bd-modal__body">
                         <CommonBlockTitle title="Выбери свое сообщество" />
                         <div className="bd-modal__body-groupchats">
-                            {state.games.map((game, i) => (
-                                <MainStreamBlock
-                                    key={i}
-                                    state={state}
-                                    game={game}
-                                    onOpenChat={onOpenChat}
-                                    onAddMember={onAddMember}
-                                    setCurrentModal={setCurrentModal}
-                                />
-                            ))}
+                            <CommonFetchFailure />
                         </div>
                     </div>
                 </div>
@@ -52,7 +39,7 @@ export const CommonModal = ({
                 <div className="bd-modal">
                     <div
                         className="bd-modal__background"
-                        onClick={() => setCurrentModal(null)}
+                        onClick={() => dispatch(closeModal(content.modal.key, null))}
                     ></div>
                     <div className="bd-modal__body settings">
                         <CommonBlockTitle title="Настройки" />

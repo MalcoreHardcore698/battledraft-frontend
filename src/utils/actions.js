@@ -1,17 +1,8 @@
 import C from './types'
 
-export function authUser(user) {
+export function authenticateUser(user) {
     return {
         type: C.USER_AUTH,
-        payload: {
-            user
-        }
-    }
-}
-
-export function regUser(user) {
-    return {
-        type: C.USER_REG,
         payload: {
             user
         }
@@ -57,6 +48,24 @@ export function newMessage(userId, chatId, message) {
         type: C.NEW_MESSAGE,
         payload: {
             userId, chatId, message
+        }
+    }
+}
+
+export function openModal(key, content) {
+    return {
+        type: C.OPEN_MODAL,
+        payload: {
+            key, content
+        }
+    }
+}
+
+export function closeModal(key) {
+    return {
+        type: C.CLOSE_MODAL,
+        payload: {
+            key
         }
     }
 }

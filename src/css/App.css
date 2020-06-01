@@ -148,7 +148,7 @@ img {
     color: var(--accent-gray-color);
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.75;
+    line-height: 1.55;
 }
 
 .bd-checkboxfield.checked p {
@@ -238,6 +238,66 @@ img {
     box-shadow: var(--box-shadow);
 }
 
+.bd-perfomance {
+    display: flex;
+    flex-direction: column;
+    padding: 120px 10%;
+}
+
+.bd-perfomance .bd-perfomance__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+    grid-gap: 15px;
+    margin-top: 25px;
+}
+
+.bd-perfomance h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.bd-perfomance .bd-perfomance__list .bd-perfomance__list-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: white;
+    border-radius: var(--border-radius);
+    height: 256px;
+    cursor: pointer;
+    opacity: .75;
+    transition: var(--transition);
+}
+
+.bd-perfomance .bd-perfomance__list .bd-perfomance__list-item:hover {
+    opacity: 1;
+}
+
+.bd-perfomance .bd-perfomance__list .bd-perfomance__list-item img {
+    position: absolute;
+    top: 96px;
+    width: 64px;
+}
+
+.bd-perfomance .bd-perfomance__list .bd-perfomance__list-item p {
+    margin-bottom: 25px;
+}
+
+.bd-perfomance__action {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 50px);
+    background: white;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    padding: 25px;
+}
+
 .bd-common-title {
     position: relative;
     top: -15px;
@@ -250,6 +310,21 @@ img {
     margin-bottom: -15px;
     font-weight: 600;
     color: #b5b5b5; 
+}
+
+.react-skeleton-load {
+    margin-bottom: 10px;
+}
+
+.bd-commonfetchfailure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 256px;
+    border: 1px dashed #bcbfc6;
+    border-radius: var(--border-radius);
+    color:#bcbfc6;
+    margin-bottom: 15px;
 }
 
 .bd-hub {
@@ -304,7 +379,7 @@ img {
 
 .bd-modal__body-groupchats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
     grid-gap: 25px;
     padding: 25px 0;
 }
@@ -1624,6 +1699,12 @@ img {
     .bd-main__hotnews {
         display: block;
         padding-bottom: 0;
+    }
+
+    .bd-modal .bd-signout,
+    .bd-modal .bd-modal__body {
+        max-width: none !important;
+        width: calc(100% - 60px) !important;
     }
 
     .bd-modal .bd-modal__body h2 {

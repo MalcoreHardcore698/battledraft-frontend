@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { ChatMessages } from '../Chat/ChatMessages'
 import { ChatMembers } from '../Chat/ChatMembers'
 
-export const SectionChat = ({ state, onNewMessage }) => {
+export const SectionChat = ({ onNewMessage }) => {
+    const content = useSelector(state => state)
     const [chat, setChat] = useState(null)
     const { chatId } = useParams()
 
     useEffect(() => {
-        const chat = state.chats.find(chat => chat.id === +chatId)
+        const chat = content.chats.find(chat => chat.id === +chatId)
         setChat(chat)
-    }, [state.chats, chatId])
+    }, [content.chats, chatId])
 
     return (
         <div className="bd-chat">
-            <ChatMessages state={state} chat={chat} onNewMessage={onNewMessage} />
-            <ChatMembers state={state} chat={chat} />
+            <ChatMessages chat={chat} onNewMessage={onNewMessage} />
+            <ChatMembers chat={chat} />
         </div>
     )
 }

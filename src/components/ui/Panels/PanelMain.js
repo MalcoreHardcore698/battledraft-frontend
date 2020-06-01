@@ -9,37 +9,17 @@ import { SectionArticle } from './../Sections/SectionArticle'
 import { SectionOffer } from './../Sections/SectionOffer'
 import { SectionChat } from './../Sections/SectionChat'
 
-export const PanelMain = ({ state, news, offers, onChooseChat, onOpenChat, onNewMessage }) => {
+export const PanelMain = () => {
     return (
         <section className="bd-main">
             <Switch>
-                <Route exact path="/">
-                    <SectionHome state={state} news={news} />
-                </Route>
-                
-                <Route path="/profile">
-                    <SectionProfile state={state} />
-                </Route>
-
-                <Route path="/navigator">
-                    <SectionNavigator state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
-                </Route>
-                
-                <Route path="/tournaments">
-                    <SectionTournaments state={state} onChooseChat={onChooseChat} onOpenChat={onOpenChat} />
-                </Route>
-
-                <Route path="/news/:newsId">
-                    <SectionArticle news={news} />
-                </Route>
-
-                <Route path="/chats/:chatId">
-                    <SectionChat state={state} onNewMessage={onNewMessage} />
-                </Route>
-
-                <Route path="/offers/:gameName">
-                    <SectionOffer offers={offers} />
-                </Route>
+                <Route exact path="/" component={SectionHome} />
+                <Route path="/profile" component={SectionProfile} />
+                <Route path="/navigator" component={SectionNavigator} />
+                <Route path="/tournaments" component={SectionTournaments} />
+                <Route path="/chats/:newsId" component={SectionArticle} />
+                <Route path="/chats/:chatId" component={SectionChat} />
+                <Route path="/chats/:gameName" component={SectionOffer} />
             </Switch>
         </section>
     )

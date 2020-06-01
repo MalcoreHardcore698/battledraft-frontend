@@ -1,31 +1,15 @@
 import React from 'react'
-
-import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-
+import Skeleton from 'react-skeleton-loader'
 import { ChatOffers } from '../Chat/ChatOffers'
-
-const GET_ALL_OFFERS = gql`
-  {
-    allOffers {
-      title
-      message
-      user {
-        name
-        avatar
-      }
-      hub {
-        title
-      }
-    }
-  }
-`
+import { CommonFetchFailure } from './../Common/CommonFetchFailure'
+import { GET_ALL_OFFERS } from './../../../utils/queries'
 
 export const SectionOffers = () => {
     const { loading, error, data } = useQuery(GET_ALL_OFFERS)
 
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`
+    if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
+    if (error) return <CommonFetchFailure />
 
     return (
         <aside className="bd-sidefeed__groupchats">

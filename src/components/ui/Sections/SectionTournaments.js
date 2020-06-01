@@ -1,6 +1,9 @@
 import React from 'react'
-
+import { useQuery } from '@apollo/react-hooks'
+import Skeleton from 'react-skeleton-loader'
+import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { Link } from 'react-router-dom'
+import { GET_ALL_TOURNAMENTS } from './../../../utils/queries'
 
 export const Tournament = ({ touranament }) => {
     return (
@@ -19,17 +22,16 @@ export const Tournament = ({ touranament }) => {
 }
 
 export const SectionTournaments = () => {
-    const touranaments = [
-        { id: 0, title: 'Gwent Open #1', description: 'New epic cup for favourite CCG', poster: 'https://mmo.one/upload/iblock/c3b/gwent-open.jpg' },
-        { id: 1, title: 'Gwent Open #1', description: 'New epic cup for favourite CCG', poster: 'https://mmo.one/upload/iblock/c3b/gwent-open.jpg' },
-        { id: 2, title: 'Gwent Open #1', description: 'New epic cup for favourite CCG', poster: 'https://mmo.one/upload/iblock/c3b/gwent-open.jpg' }
-    ]
+    const { loading, error, data } = useQuery(GET_ALL_TOURNAMENTS)
+
+    if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
+    if (error) return <CommonFetchFailure />
 
     return (
         <div className="bd-navigator">
             <aside className="bd-sidefeed__groupchats">
                 <h2>Открытые турниры</h2>
-                {touranaments.map(touranament =>
+                {data.allTournaments.map(touranament =>
                     <Tournament key={touranament.id} touranament={touranament} />    
                 )}
             </aside>

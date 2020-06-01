@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MainStreamSlide = ({ state, game, active }) => {
+export const MainStreamSlide = ({ game, active }) => {
     return (
         <div
             className={`bd-main__mainstream-block slide ${game.color}${active ? ' active' : ''}`}

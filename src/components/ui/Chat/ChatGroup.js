@@ -1,16 +1,21 @@
 import React from 'react'
+import { useQuery } from '@apollo/react-hooks'
+import Skeleton from 'react-skeleton-loader'
+import { CommonFetchFailure } from './../Common/CommonFetchFailure'
+import { GET_POPULAR_HUB_CHAT } from './../../../utils/queries'
 import { Link } from 'react-router-dom'
 
 import { ChatOffers } from './ChatOffers'
 
-export const ChatGroup = ({ state, chat, chats, offers, onOpenChat }) => {
-    if (!chat) return null
+export const ChatGroup = ({ chat, onOpenChat }) => {
+    const { loading, error, data } = useQuery(GET_POPULAR_HUB_CHAT)
 
     const handlerChat = () => {
-        if (!state.user.chats.find(_chat => _chat.id === chat.id)) {
-            onOpenChat(chat.id, chats)
-        }
+        onOpenChat(chat.id)
     }
+
+    if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
+    if (error) return <CommonFetchFailure />
 
     return (
         <div className="block">
@@ -30,7 +35,7 @@ export const ChatGroup = ({ state, chat, chats, offers, onOpenChat }) => {
                 </div>
             </Link>
 
-            <ChatOffers offers={offers} />
+            <ChatOffers offers={data.offers} />
         </div>
     )
 }

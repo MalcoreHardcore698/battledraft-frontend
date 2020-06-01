@@ -1,25 +1,28 @@
 import React from 'react'
-
+import { useQuery } from '@apollo/react-hooks'
+import { useDispatch } from 'react-redux'
+import { ChatLink } from './ChatLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { openModal } from './../../../utils/actions'
+import { GET_ALL_USER_CHATS } from './../../../utils/queries'
 
-import { ChatLink } from './ChatLink'
+export const ChatLinks = () => {
+    const { data } = useQuery(GET_ALL_USER_CHATS)
+    const dispatch = useDispatch()
 
-export const ChatLinks = ({ state, setCurrentModal, onChooseChat, onCloseChat, onOpenChat }) => {
     return (
         <div className="bd-openchats">
-            {(state.user.chats.find(chat => chat.type === 'personal')) ?
+            {(data &&  data.allUserChats && data.allUserChats.find(chat => chat.type === 'personal')) ?
                 <React.Fragment>
                     <ul className={`bd-openchats__personal`}>
-                        {state.user.chats.filter(chat => chat.type === 'personal').map(currentChat =>
+                        {data.allUserChats.filter(chat => chat.type === 'personal').map(currentChat =>
                             <ChatLink
                                 key={currentChat.id}
-                                chat={state.chats.find(chat => chat.id === currentChat)}
-                                onChooseChat={onChooseChat}
-                                onCloseChat={onCloseChat}
+                                chat={currentChat}
                             />
                         )}
-                        <li className="bd-chat-new" onClick={onOpenChat}><FontAwesomeIcon icon={faPlus} /></li>
+                        <li className="bd-chat-new" onClick={() => dispatch(openModal('new-personal-chat', null))}><FontAwesomeIcon icon={faPlus} /></li>
                     </ul>
 
                     <div className="bd-break"></div>
@@ -27,15 +30,13 @@ export const ChatLinks = ({ state, setCurrentModal, onChooseChat, onCloseChat, o
             : ''}
 
             <ul className={`bd-openchats__group`}>
-                {state.user.chats.filter(chat => chat.type === 'group').map(currentChat =>
+                {data && data.allUserChats && data.allUserChats.filter(chat => chat.type === 'group').map(currentChat =>
                     <ChatLink
                         key={currentChat.id}
-                        chat={state.chats.find(chat => chat.id === currentChat.id)}
-                        onChooseChat={onChooseChat}
-                        onCloseChat={onCloseChat}
+                        chat={currentChat}
                     />
                 )}
-                <li className="bd-chat-new" onClick={() => setCurrentModal('groupchats')}><FontAwesomeIcon icon={faPlus} /></li>
+                <li className="bd-chat-new" onClick={() => dispatch(openModal('new-group-chat', null))}><FontAwesomeIcon icon={faPlus} /></li>
             </ul>
         </div>
     )

@@ -1,11 +1,18 @@
 import React from 'react'
-
+import { useQuery } from '@apollo/react-hooks'
+import Skeleton from 'react-skeleton-loader'
+import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { Link } from 'react-router-dom'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { GET_ALL_USER_NOTIFICATIONS } from './../../../utils/queries'
 
-export const UserNotification = ({ state }) => {
+export const UserNotification = () => {
+    const { loading, error, data } = useQuery(GET_ALL_USER_NOTIFICATIONS)
+
+    if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
+    if (error) return <CommonFetchFailure />
+
     return (
         <div className="bd-sidefeed__notifications">
             <div className="bd-title-group">
@@ -14,7 +21,7 @@ export const UserNotification = ({ state }) => {
             </div>
 
             <ul className="bd-sidefeed__notifications-list">
-                {state.user.notifications.map(notification =>
+                {data.allUserNotifications.map(notification =>
                     <li key={notification.id} className="bd-sidefeed__notifications-item">
                         <div className="icon">
                             <img src={notification.icon} alt={notification.title} />

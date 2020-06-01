@@ -3,10 +3,10 @@ import React from 'react'
 import { SectionMainStream } from './SectionMainStream'
 import { SectionNews } from './SectionNews'
 
-export const SectionHome = ({ state, news }) => {
+export const SectionHome = ({ news }) => {
     return (
         <React.Fragment>
-            <SectionMainStream state={state} />
+            <SectionMainStream />
             <SectionNews news={news} />
         </React.Fragment>
     )

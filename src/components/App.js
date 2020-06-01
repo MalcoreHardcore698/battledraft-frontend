@@ -1,32 +1,26 @@
-import React, { useState } from 'react'
-
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom'
-
-import { AuthContainer } from './containers/AuthContainer'
-import { HubContainer } from './containers/HubContainer'
-
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { PageAuth } from './ui/Pages/PageAuth'
+import { PagePerfomance } from './ui/Pages/PagePerfomance'
+import { PageHub } from './ui/Pages/PageHub'
 import './../css/App.css'
 
 export const App = () => {
-  const [isAuthenticated, setAuthenticated] = useState(localStorage.getItem('isAuthenticated') === 'true')
+  const content = useSelector(state => state)
 
   return (
-      <Router>
-        {(!isAuthenticated &&
-          <AuthContainer
-            setAuthenticated={setAuthenticated}
-          />
-        )}
-
-        {(isAuthenticated &&
-          <HubContainer
-            setAuthenticated={setAuthenticated}
-          />
-        )}
-
-        <Switch>
-          <Redirect to="/" />
-        </Switch>
-      </Router>
+    <Router>
+      <Switch>
+        {
+          (content.user && !content.user.preferences) ?
+            <Route to="/perfomance" component={PagePerfomance} /> :
+          (content.user) ?
+            <Route to="/" component={PageHub} /> :
+            <Route to="/" component={PageAuth} />
+        }
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   )
 }

@@ -1,22 +1,17 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
 import { FormAuth } from './../Form/FormAuth'
 import { FormReg } from './../Form/FormReg'
 import { CommonButton } from '../Common/CommonButton'
+import { authenticateUser } from './../../../utils/actions'
+import credentials from './../../../utils/credentials'
 
-export const AuthContent = ({ method, setAuthenticated, onAuthUser, onRegUser }) => {
+export const AuthContent = ({ method }) => {
+    const dispatch = useDispatch()
+
     const handlerSubmit = (e) => {
         e.preventDefault()
-        if (method === 'log') {
-            onAuthUser(null, null)
-            setAuthenticated(true)
-            localStorage.setItem('isAuthenticated', true)
-        }
-        else {
-            onRegUser(null, null, null, null)
-            setAuthenticated(true)
-            localStorage.setItem('isAuthenticated', true)
-        }
+        dispatch(authenticateUser(credentials))
     }
 
     return (

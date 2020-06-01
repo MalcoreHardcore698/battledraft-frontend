@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
-
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faUserCircle, faCompass, faTrophy, faCog } from '@fortawesome/free-solid-svg-icons'
-
 import { ChatLinks } from './../Chat/ChatLinks'
-
+import { openModal } from './../../../utils/actions'
 import Brand from './../../../img/brand.png'
 
 export const PanelSideBar = ({
-    state,
-    setCurrentModal,
     onChooseChat,
     onCloseChat,
     onOpenChat
 }) => {
+    const dispatch = useDispatch()
     const [collapsed, setCollapse] = useState(false)
-    const handlerSettingsModal = (e) => {
-        e.preventDefault()
-        setCurrentModal('settings')
-    }
 
     return (
         <section className={`bd-sidebar${(collapsed) ? ' collapsed' : ' expand'}`}>
@@ -38,7 +31,7 @@ export const PanelSideBar = ({
 
                 <button
                     className="bd-sidebar-profile__settings"
-                    onClick={handlerSettingsModal}
+                    onClick={() => dispatch(openModal('settings', null))}
                 >
                     <FontAwesomeIcon icon={faCog} />
                 </button>
@@ -62,8 +55,6 @@ export const PanelSideBar = ({
             <div className="bd-sidebar-chats">
                 <h2>Чаты</h2>
                 <ChatLinks
-                    state={state}
-                    setCurrentModal={setCurrentModal}
                     onChooseChat={onChooseChat}
                     onCloseChat={onCloseChat}
                     onOpenChat={onOpenChat}

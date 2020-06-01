@@ -6,7 +6,6 @@ import { PanelSideFeed } from './../Panels/PanelSideFeed'
 import { CommonModal } from './../Common/CommonModal'
 
 export const PageHub = ({
-    state,
     setAuthenticated,
     onChooseChat,
     onCloseChat,
@@ -48,7 +47,6 @@ export const PageHub = ({
         <div className="bd-app">
             <div className="bd-hub">
                 <PanelSideBar
-                    state={state}
                     currentModal={currentModal}
                     setCurrentModal={setCurrentModal}
                     onChooseChat={onChooseChat}
@@ -57,7 +55,6 @@ export const PageHub = ({
                 />
                 
                 <PanelMain
-                    state={state}
                     news={news}
                     offers={offers}
                     onChooseChat={onChooseChat}
@@ -65,12 +62,9 @@ export const PageHub = ({
                     onNewMessage={onNewMessage}
                 />
 
-                <PanelSideFeed
-                    state={state}
-                />
+                <PanelSideFeed />
                 
                 <CommonModal
-                    state={state}
                     currentModal={currentModal}
                     setCurrentModal={setCurrentModal}
                     setAuthenticated={setAuthenticated}

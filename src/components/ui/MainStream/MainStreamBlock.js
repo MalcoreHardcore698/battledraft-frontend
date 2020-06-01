@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
-export const MainStreamBlock = ({ state, game, color, active, setCurrentModal, onOpenChat, onAddMember }) => {
+export const MainStreamBlock = ({ game, active, setCurrentModal, onOpenChat, onAddMember }) => {
+    const content = useSelector(state => state)
     const [inactive, setInactive] = useState(false)
 
     const handlerOpenChat = () => {
-        if (state.user.chats.find(chat => chat.id === game.id)) {
+        if (content.user.chats.find(chat => chat.id === game.id)) {
             setInactive(true)
         } else {
-            onOpenChat(game.id, state.chats)
-            onAddMember(game.id, state.user)
+            onOpenChat(game.id, content.chats)
+            onAddMember(game.id, content.user)
             setCurrentModal(null)
         }
     }
 
     useEffect(() => {
-        if (state.user.chats.find(chat => chat.id === game.id)) {
+        if (content.user.chats.find(chat => chat.id === game.id)) {
             setInactive(true)
         }
-    }, [game, state.user.chats])
+    }, [game, content.user.chats])
 
     return (
         <Link
