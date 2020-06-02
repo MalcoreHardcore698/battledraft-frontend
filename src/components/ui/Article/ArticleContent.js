@@ -5,7 +5,7 @@ export const ArticleContent = ({ article, tag="preview" }) => {
     return (
         <article className={`${article.type} ${tag}`}>
             <div className="image">
-                <img src={article.img} alt="Poster" />
+                <img src={article.image} alt="Poster" />
             </div>
             <div className="text">
                 <div className="body">
@@ -18,8 +18,8 @@ export const ArticleContent = ({ article, tag="preview" }) => {
                     <p>{article.body}</p>
                 </div>
                 <div className="tags">
-                    <p className="game">Game</p>
-                    <p className="date">2 hours ago</p>
+                    <p className="game">{article.hub.title}</p>
+                    <p className="date">{article.date}</p>
                 </div>
             </div>
         </article>

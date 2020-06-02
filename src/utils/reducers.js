@@ -8,6 +8,11 @@ export function userReducer(state = {}, action) {
                 ...state,
                 ...action.payload.user,
             }
+        case C.USER_PREFERENCES:
+            return {
+                ...state,
+                preferences: action.payload.preferences
+            }
         default:
             return state
     }

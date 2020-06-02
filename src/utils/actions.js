@@ -9,6 +9,15 @@ export function authenticateUser(user) {
     }
 }
 
+export function preferencesUser(preferences) {
+    return {
+        type: C.USER_PREFERENCES,
+        payload: {
+            preferences
+        }
+    }
+}
+
 export function chooseChat(chat) {
     return {
         type: C.CHOOSE_CHAT,

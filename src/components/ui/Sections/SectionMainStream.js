@@ -9,7 +9,7 @@ import { faFire } from '@fortawesome/free-solid-svg-icons'
 import { GET_ALL_HUBS } from './../../../utils/queries'
 import carouselSettings from './../../../utils/carousel'
 
-export const SectionMainStream = ({ setCurrentGame }) => {
+export const SectionMainStream = () => {
     const { loading, error, data } = useQuery(GET_ALL_HUBS)
 
     if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
@@ -22,8 +22,7 @@ export const SectionMainStream = ({ setCurrentGame }) => {
                 {data.allHubs.map((hub, i) => (
                     <MainStreamSlide
                         key={i}
-                        game={hub}
-                        setCurrentGame={setCurrentGame}
+                        hub={hub}
                         active={(i === 0)}
                     />
                 ))}
