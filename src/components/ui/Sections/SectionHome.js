@@ -3,11 +3,11 @@ import React from 'react'
 import { SectionMainStream } from './SectionMainStream'
 import { SectionNews } from './SectionNews'
 
-export const SectionHome = ({ news }) => {
+export const SectionHome = () => {
     return (
         <React.Fragment>
             <SectionMainStream />
-            <SectionNews news={news} />
+            <SectionNews />
         </React.Fragment>
     )
 }

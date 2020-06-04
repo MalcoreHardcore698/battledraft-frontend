@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const GET_ALL_OFFERS = gql`
-    {
+    query {
         allOffers {
             id
             title
@@ -18,7 +18,7 @@ export const GET_ALL_OFFERS = gql`
 `
 
 export const GET_ALL_HUBS = gql`
-    {
+    query {
         allHubs {
             id
             title
@@ -32,7 +32,7 @@ export const GET_ALL_HUBS = gql`
 `
 
 export const GET_ALL_NEWS = gql`
-    {
+    query {
         allNews {
             id
             title
@@ -41,13 +41,31 @@ export const GET_ALL_NEWS = gql`
             hub {
                 title
             }
-            date
+            datePublished
+        }
+    }
+`
+
+export const GET_NEWS = gql`
+    query {
+        getNews {
+            id
+            title
+            body
+            image
+            hub {
+                id
+                title
+            }
+            source
+            url
+            datePublished
         }
     }
 `
 
 export const GET_ALL_USER_TRANSACTIONS = gql`
-    {
+    query {
         allUserTransactions {
             id
             title
@@ -58,7 +76,7 @@ export const GET_ALL_USER_TRANSACTIONS = gql`
 `
 
 export const GET_ALL_USER_NOTIFICATIONS = gql`
-    {
+    query {
         allUserNotifications {
             id
             title
@@ -70,7 +88,7 @@ export const GET_ALL_USER_NOTIFICATIONS = gql`
 `
 
 export const GET_POPULAR_HUB_CHAT = gql`
-    {
+    query {
         getPopularHubChat {
             id
             title
@@ -83,7 +101,7 @@ export const GET_POPULAR_HUB_CHAT = gql`
 `
 
 export const GET_ALL_TOURNAMENTS = gql`
-    {
+    query {
         allTournaments {
             id
             title
@@ -94,11 +112,7 @@ export const GET_ALL_TOURNAMENTS = gql`
 `
 
 export const GET_ALL_USER_CHATS = gql`
-    {
-        allUserChats {
-            id
-            title
-            icon
-        }
+    query {
+        allUserRoles
     }
 `

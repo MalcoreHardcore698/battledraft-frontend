@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const MainStreamSlide = ({ hub, active }) => {
-    console.log(hub)
     return (
         <div
             className={`bd-main__mainstream-block slide${active ? ' active' : ''}`}
