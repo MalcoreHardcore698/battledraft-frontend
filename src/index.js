@@ -11,7 +11,7 @@ import storeFactory from './storeFactory'
 import './index.css'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'http://api.battledraft.ru/graphql',
 })
 const store = storeFactory
 

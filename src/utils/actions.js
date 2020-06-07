@@ -1,11 +1,11 @@
 import C from './types'
 
-export function authenticateUser(user) {
+export function authenticateUser(auth) {
+    if (auth) localStorage.setItem('user', JSON.stringify(auth.id))
+
     return {
         type: C.USER_AUTH,
-        payload: {
-            user
-        }
+        payload: auth
     }
 }
 

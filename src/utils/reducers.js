@@ -6,7 +6,7 @@ export function userReducer(state = {}, action) {
         case C.USER_AUTH:
             return {
                 ...state,
-                ...action.payload.user,
+                ...action.payload
             }
         case C.USER_PREFERENCES:
             return {

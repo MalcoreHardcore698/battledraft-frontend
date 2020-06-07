@@ -7,7 +7,7 @@ export const config = {
                 ? global.location.origin
             : (global.location.port && +global.location.port !== port)
                 ? `http://localhost:60474`
-            : `http://cr-dev.dock7.66bit.ru`
+            : `http://battledraft.ru/`
     },
     get: (key) => {
         return config.proxy[key]

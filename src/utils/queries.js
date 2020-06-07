@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const GET_ALL_OFFERS = gql`
-    query {
-        allOffers {
+    query allOffers($status: Status!) {
+        allOffers(status: $status) {
             id
             title
             message
@@ -11,15 +11,17 @@ export const GET_ALL_OFFERS = gql`
                 avatar
             }
             hub {
+                id
                 title
+                color
             }
         }
     }
 `
 
 export const GET_ALL_HUBS = gql`
-    query {
-        allHubs {
+    query allHubs($status: Status!) {
+        allHubs(status: $status) {
             id
             title
             description
@@ -32,8 +34,8 @@ export const GET_ALL_HUBS = gql`
 `
 
 export const GET_ALL_NEWS = gql`
-    query {
-        allNews {
+    query allNews($status: Status!) {
+        allNews(status: $status) {
             id
             title
             body
@@ -47,8 +49,8 @@ export const GET_ALL_NEWS = gql`
 `
 
 export const GET_NEWS = gql`
-    query {
-        getNews {
+    query getNews($id: ID!) {
+        getNews(id: $id) {
             id
             title
             body
@@ -114,5 +116,88 @@ export const GET_ALL_TOURNAMENTS = gql`
 export const GET_ALL_USER_CHATS = gql`
     query {
         allUserRoles
+    }
+`
+
+export const GET_USER = gql`
+    query getUser($id: ID!) {
+        getUser(id: $id) {
+            id
+            name
+            password
+            email
+            phone
+            role
+            balance
+            avatar
+            preferences {
+                id
+                title
+                color
+                slogan
+                icon
+            }
+            dateLastAuth
+            dateRegistration
+            isVerifiedEmail
+            isVerifiedPhone
+            isNotified
+        }
+    }
+`
+
+export const GET_HUB = gql`
+    query getHub($id: ID!) {
+        getHub(id: $id) {
+            title
+            description
+            slogan
+            icon
+            poster
+            color
+            offers {
+                title
+                message
+                user {
+                    name
+                    avatar
+                }
+                hub {
+                    color
+                }
+            }
+        }
+    }
+`
+
+export const AUTH_USER = gql`
+    query authUser(
+        $name: String
+        $email: String
+        $password: String!
+    ) {
+        authUser(
+            name: $name
+            email: $email
+            password: $password
+        ) {
+            id
+            name
+            password
+            email
+            phone
+            role
+            balance
+            avatar
+            preferences {
+                id
+                title
+            }
+            dateLastAuth
+            dateRegistration
+            isVerifiedEmail
+            isVerifiedPhone
+            isNotified
+        }
     }
 `
