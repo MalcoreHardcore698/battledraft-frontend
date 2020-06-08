@@ -9,6 +9,7 @@ import { CommonInputField } from './CommonInputField'
 import { CommonButton } from './CommonButton'
 import { CommonCheckbox } from './CommonCheckbox'
 import { CommonFetchFailure } from './../Common/CommonFetchFailure'
+import { UserAddOffer } from './../User/UserAddOffer'
 import { GET_ALL_HUBS } from './../../utils/queries'
 import { authenticateUser, closeModal } from './../../utils/actions'
 
@@ -62,9 +63,7 @@ export const CommonModal = () => {
                     ></div>
                     <div className="bd-modal__body">
                         <CommonBlockTitle title="Добавление заявки" />
-                        <div className="bd-commonempty">
-                            <p>Пока пусто</p>
-                        </div>
+                        <UserAddOffer hubs={data.allHubs} />
                     </div>
                 </div>
             )

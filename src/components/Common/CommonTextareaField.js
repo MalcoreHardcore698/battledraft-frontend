@@ -1,16 +1,14 @@
 import React from 'react'
 
-export const CommonInputField = ({ name, label, type, className, onChange }) => {
+export const CommonTextareaField = ({ name, label, value, disabled }) => {
     return (
         <div className="bd-inputfield">
             <label htmlFor={name}>{label}</label>
-            <input
-                className={className}
+            <textarea
                 name={name}
-                type={type}
-                onChange={onChange}
                 placeholder="Не указано"
-                autoComplete="off"
+                defaultValue={value}
+                disabled={disabled}
             />
         </div>
     )

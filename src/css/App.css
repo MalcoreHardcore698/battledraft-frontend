@@ -64,13 +64,26 @@ label {
     margin: 0 0 10px 0;
 }
 
-input {
+textarea {
+    resize: none;
+    min-height: 128px;
+}
+
+input, textarea, select {
     border: none;
     outline: none;
     background-color: var(--accent-gray-background);
     border-radius: 5px;
     padding: 10px 15px;
-    font-size: 1rem;
+    transition: var(--transition);
+}
+  
+input::placeholder, textarea::placeholder, select::placeholder {
+color: #B7B7B7;
+font-size: 1rem;
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+color: #ccc;
 }
 
 img {
@@ -89,14 +102,39 @@ img {
     text-align: left !important;
 }
 
+.bd-selectfield,
 .bd-inputfield {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 10px 0;
 }
 
 .bd-inputfield input.invalid {
     border: 1px solid #b98080;
+}
+
+.bda-selectfield p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: 1px dashed #cacaca;
+    color: #d2d2d2;
+    font-size: 1rem;
+    height: 40px;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.bda-selectfield select,
+.bda-selectfield select option {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    transition: var(--transition);
 }
 
 .bd-button-default,
@@ -131,6 +169,39 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
+}
+
+.bda-inputfield .bd-imagefield {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 15px;
+    font-size: 2rem;
+}
+
+.bda-inputfield .bd-imagefield .bd-imagefield__current,
+.bda-inputfield .bd-imagefield .bd-imagefield__upload .dzu-dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+.bda-inputfield .bd-imagefield .bd-imagefield__upload .bda-button-default {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.bda-inputfield .bd-imagefield .bd-imagefield__current img {
+    border-radius: var(--border-radius);
+    height: 100%;
+}
+
+.bd-inputfield .bd-imagefield .bd-imagefield__current.icon img {
+    width: 64px;
+    object-fit: contain;
+    margin: 25px;
 }
 
 .bd-checkboxfield {
@@ -401,7 +472,6 @@ img {
     text-align: center;
     background: #efefef;
     border-radius: 5px 5px 0 0;
-    margin-bottom: -15px;
     font-weight: 600;
     color: #b5b5b5; 
 }
@@ -486,6 +556,7 @@ img {
     overflow-y: auto;
     max-height: calc(100vh - 250px);
     max-width: 525px;
+    min-width: 320px;
     scrollbar-width: none;
 }
 
@@ -1640,7 +1711,7 @@ img {
 }
 
 .bd-modal .bd-commonempty {
-    margin: 15px 0 0 0;
+    margin: 0;
     padding: 0 15px; 
 }
 
