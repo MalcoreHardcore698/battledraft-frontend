@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import Skeleton from 'react-skeleton-loader'
 import { Link } from 'react-router-dom'
 import { MainStreamBlock } from './../MainStream/MainStreamBlock'
+import { Greeting } from './../Greeting/Greeting'
 import { CommonBlockTitle } from './CommonBlockTitle'
 import { CommonInputField } from './CommonInputField'
 import { CommonButton } from './CommonButton'
@@ -34,6 +35,15 @@ export const CommonModal = () => {
     if (error) return <CommonFetchFailure />
 
     switch (content.modal.key) {
+        case 'greeting':
+            return (
+                <div className="bd-modal">
+                    <div className="bd-modal__background"></div>
+                    <div className="bd-modal__body">
+                        <Greeting />
+                    </div>
+                </div>
+            )
         case 'offer':
             return (
                 <div className="bd-modal">

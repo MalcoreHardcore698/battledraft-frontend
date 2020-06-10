@@ -238,6 +238,8 @@ export const AUTH_USER = gql`
             phone
             role
             balance
+            level
+            experience
             avatar
             preferences {
                 id

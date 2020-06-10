@@ -1,7 +1,7 @@
 export default {
     user: null,
     modal: {
-        key: null,
+        key: 'greeting',
         content: null
     }
 }
