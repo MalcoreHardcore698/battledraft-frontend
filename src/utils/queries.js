@@ -129,6 +129,8 @@ export const GET_USER = gql`
             phone
             role
             balance
+            level
+            experience
             avatar
             preferences {
                 id
@@ -165,6 +167,54 @@ export const GET_HUB = gql`
                 hub {
                     color
                 }
+            }
+        }
+    }
+`
+
+export const ADD_OFFER = gql`
+  mutation addOffer(
+    $title: String!
+    $message: String!
+    $user: ID!
+    $hub: ID!
+    $status: Status!
+    $dateEdited: String
+    $datePublished: String
+    $dateCreated: String!
+  ) {
+    addOffer(
+      title: $title
+      message: $message
+      user: $user
+      hub: $hub
+      status: $status
+      dateEdited: $dateEdited
+      datePublished: $datePublished
+      dateCreated: $dateCreated
+    )
+  }
+`
+
+export const GET_USER_OFFERS = gql`
+    query allUserOffers(
+        $id: ID!
+    ) {
+        allUserOffers(
+            id: $id
+        ) {
+            id
+            title
+            message
+            user {
+                id
+                name
+                avatar
+            }
+            hub {
+                id
+                title
+                color
             }
         }
     }

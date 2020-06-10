@@ -2,6 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const UserPreferences = () => {
     const state = useSelector(state => state)
@@ -12,10 +15,10 @@ export const UserPreferences = () => {
             </div>
 
             <div className="bd-navigator__hublist">
-                {state.user.preferences.map(hub =>
-                    <div key={hub.id} className="bd-hubblock">
+                {state.user.preferences.map((hub, i) =>
+                    <div key={i} className="bd-hubblock">
                         <div className="content">
-                            <img src={`/img/${hub.icon}`} alt={hub.icon} />
+                            <img src={`${api}${hub.icon.replace('./', '/')}`} alt={hub.icon} />
                             <div className="info">
                                 <p className="title">{hub.title}</p>
                                 <p className="slogan">{hub.slogan}</p>

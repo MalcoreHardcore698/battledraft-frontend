@@ -5,6 +5,9 @@ import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire } from '@fortawesome/free-solid-svg-icons'
 import { GET_ALL_HUBS } from './../../utils/queries'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const SectionPopularHub = ({ filter, setFilter }) => {
     const { loading, error, data } = useQuery(GET_ALL_HUBS, {
@@ -29,7 +32,7 @@ export const SectionPopularHub = ({ filter, setFilter }) => {
                         style={{ background: hub.id === filter ? hub.color : 'none'}}
                     >
                         <div className="content">
-                            <img src={`/img/${hub.icon}`} alt={hub.icon} />
+                            <img src={`${api}${hub.icon.replace('./', '/')}`} alt={hub.icon} />
                             <div className="info">
                                 <p className="title">{hub.title}</p>
                                 <p className="slogan">{hub.slogan}</p>

@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const ArticleContent = ({ article, tag="preview" }) => {
     return (
         <article className={`${article.type} ${tag}`}>
             <div className="image">
-                <img src={article.image} alt="Poster" />
+                <img src={`${api}${article.image.replace('./', '/')}`} alt="Poster" />
             </div>
             <div className="text">
                 <div className="body">

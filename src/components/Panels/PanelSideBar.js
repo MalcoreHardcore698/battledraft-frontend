@@ -9,6 +9,9 @@ import { faBars, faCompass, faTrophy, faCog } from '@fortawesome/free-solid-svg-
 import { ChatLinks } from './../Chat/ChatLinks'
 import { openModal } from './../../utils/actions'
 import Brand from './../../img/brand.png'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 function Separator(props) {
     return (
@@ -67,10 +70,10 @@ export const PanelSideBar = ({
                     onClick={() => setCollapse(false)}
                     className="bd-sidebar-content__progress"
                 >
-                    <img src={`/img/${state.user.avatar}`} alt="Avatar" />
+                    <img src={`${api}${state.user.avatar.replace('./', '/')}`} alt="Avatar" />
                     <div className="exp">
                         <CircularProgressbarWithChildren
-                            value={15}
+                            value={state.user.experience}
                             strokeWidth={5}
                             styles={buildStyles({
                                 strokeLinecap: 'butt'
@@ -90,7 +93,7 @@ export const PanelSideBar = ({
                 </div>
                 <div className="bd-sidebar-content__info">
                     <p className="name">{state.user.name}</p>
-                    <p className="level">Уровень <span>3</span></p>
+                    <p className="level">Уровень <span>{state.user.level}</span></p>
                 </div>
             </Link>
 

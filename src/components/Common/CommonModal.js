@@ -12,6 +12,9 @@ import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { UserAddOffer } from './../User/UserAddOffer'
 import { GET_ALL_HUBS } from './../../utils/queries'
 import { authenticateUser, closeModal } from './../../utils/actions'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const CommonModal = () => {
     const [checked, setCheckbox] = useState(true)
@@ -42,7 +45,7 @@ export const CommonModal = () => {
                         <CommonBlockTitle title="Информация" />
                         <div className="bd-offer">
                             <div className="title">
-                                <img src={content.modal.content.user.avatar} alt={content.modal.content.user.name} />
+                                <img src={`${api}${content.modal.content.user.avatar.replace('./', '/')}`} alt={content.modal.content.user.name} />
                                 <h5>{content.modal.content.user.name}</h5>
                             </div>
                             <div className="content">

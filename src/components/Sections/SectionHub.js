@@ -5,6 +5,9 @@ import Skeleton from 'react-skeleton-loader'
 import { ChatOffers } from '../Chat/ChatOffers'
 import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { GET_HUB } from './../../utils/queries'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const SectionHub = () => {
     const { hubId } = useParams()
@@ -19,11 +22,10 @@ export const SectionHub = () => {
         <aside className="bd-main__hub">
             <div className="bd-hubblock active">
                 <div className="content">
-                    <img src={data.getHub.img} alt="hub 1" />
+                    <img src={`${api}${data.getHub.poster.replace('./', '/')}`} alt="hub 1" />
                     <p style={{ background: data.getHub.color || 'gray' }}>{data.getHub.title}<span>{data.getHub.slogan}</span></p>
                 </div>
             </div>
-            {data.getHub.offers.length === 0 && <p className="bd-commonempty">Заявок нет</p>}
             <ChatOffers offers={data.getHub.offers} />
         </aside>
     )

@@ -570,7 +570,7 @@ img {
 
 .bd-modal__body-groupchats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
     grid-gap: 25px;
     padding: 25px 0;
 }
@@ -818,8 +818,8 @@ img {
 
 .bd-home {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, min-content);
     grid-gap: 15px;
 }
 
@@ -831,7 +831,6 @@ img {
     position: relative;
     left: -20px;
     width: calc(100vw - 720px);
-    grid-column: 1 / 3;
 }
 
 .bd-main__mainstream > h2 {
@@ -934,7 +933,7 @@ img {
     flex-direction: column;
     border-radius: var(--border-radius);
     overflow: hidden;
-    height: 196px;
+    height: 256px;
     user-select: none;
 }
 
@@ -1210,6 +1209,12 @@ img {
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, .025);
 }
 
+.bd-main article.preview {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+}
+
 .bd-main > article {
     margin: 15px 0;
 }
@@ -1282,7 +1287,7 @@ img {
     background: none;
     padding: 0;
     overflow: hidden;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .bd-main .bd-navigator h2 {
@@ -1326,6 +1331,7 @@ img {
 .bd-main__hotnews {
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
     grid-gap: 15px;
 }
 
@@ -1373,6 +1379,18 @@ img {
     background: #f1f1f1;
 }
 
+.bd-main .bd-navigator__hublist .bd-hubblock:hover .content img {
+    filter: brightness(0.55);
+}
+
+.bd-main .bd-navigator__hublist .bd-hubblock.active:hover .content img {
+    filter: none;
+}
+
+.bd-main .bd-navigator__hublist .bd-hubblock.active .content img {
+    filter: brightness(1);
+}
+
 .bd-main .bd-navigator__hublist .bd-hubblock:first-child {
     border: none;
 }
@@ -1391,6 +1409,7 @@ img {
 .bd-main .bd-navigator__hublist .bd-hubblock .content img,
 .bd-main .bd-navigator__hublist .bd-hubblock .content {
     height: auto;
+    transition: var(--transition);
 }
 
 .bd-main .bd-navigator__hublist .bd-hubblock .content img {
@@ -1451,6 +1470,7 @@ img {
 
 .bd-title-group h2 {
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 1rem;
     font-weight: 900;
@@ -1952,6 +1972,10 @@ img {
 
     .bd-main__hotnews {
         padding-bottom: 0;
+    }
+    
+    .bd-main article.preview {
+        grid-template-columns: 1fr;
     }
 }
 
