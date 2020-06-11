@@ -16,11 +16,11 @@ export const UserNotification = () => {
             </div>
 
             <ul className="bd-sidefeed__notifications-list">
-                {(!state.user.notifications || state.user.notifications.length === 0) &&
+                {(!state.user || !state.user.notifications || state.user.notifications.length === 0) &&
                 <div className="bd-commonempty">
                     <p>Уведомления отсутствуют</p>
                 </div>}
-                {(state.user.notifications) && state.user.notifications.map(notification =>
+                {(state.user && state.user.notifications) && state.user.notifications.map(notification =>
                     <li key={notification.id} className="bd-sidefeed__notifications-item">
                         <div className="icon">
                             <img src={notification.icon} alt={notification.title} />

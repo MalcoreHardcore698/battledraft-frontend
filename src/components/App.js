@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useLazyQuery } from '@apollo/react-hooks'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+// eslint-disable-next-line
 import { PageAuth } from './Pages/PageAuth'
+// eslint-disable-next-line
 import { PagePreferences } from './Pages/PagePreferences'
 import { PageHub } from './Pages/PageHub'
 import { authenticateUser } from './../utils/actions'
@@ -14,6 +16,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import './../css/App.css'
 
 export const App = () => {
+  // eslint-disable-next-line
   const content = useSelector(state => state)
   const dispatch = useDispatch()
   const [getUser, { loading, data }] = useLazyQuery(GET_USER)
@@ -40,13 +43,7 @@ export const App = () => {
   return (
     <Router>
       <Switch>
-        {
-          (content.user && content.user.preferences.length < 3) ?
-            <PagePreferences /> :
-          (content.user) ?
-            <Route to="/" component={PageHub} /> :
-            <Route to="/" component={PageAuth} />
-        }
+        <Route to="/" component={PageHub} />
         <Redirect to="/" />
       </Switch>
     </Router>

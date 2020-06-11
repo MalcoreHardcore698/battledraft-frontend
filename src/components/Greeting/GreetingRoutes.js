@@ -1,10 +1,11 @@
 import React from 'react'
+import { GreetingWelcome } from './GreetingWelcome'
 import { GreetingPreferences } from './GreetingPreferences'
 
 export const GreetingRoutes = ({ step }) => {
     switch (step) {
         case 1:
-            return <p>Добро пожаловать!</p>
+            return <GreetingWelcome /> 
         case 2:
             return <p>Выберите аватар</p>
         case 3:

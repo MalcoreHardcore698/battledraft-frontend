@@ -11,15 +11,15 @@ export const UserBalance = () => {
         <div className="bd-sidefeed__balance">
             <div className="bd-title-group">
                 <h2><FontAwesomeIcon icon={faWallet} />Баланс</h2>
-                <Link to="/cash">{state.user.balance ? state.user.balance : 0} &#8381;</Link>
+                <Link to="/cash">{state.user && state.user.balance ? state.user.balance : 0} &#8381;</Link>
             </div>
 
             <ul className="bd-transactions__list">
-                {(!state.user.transactions || state.user.transactions.length === 0) &&
+                {(!state.user || !state.user.transactions || state.user.transactions.length === 0) &&
                 <div className="bd-commonempty">
                     <p>Транзакции отсутствуют</p>
                 </div>}
-                {(state.user.transactions) && state.user.transactions.map(transaction =>
+                {(state.user && state.user.transactions) && state.user.transactions.map(transaction =>
                     <li key={transaction.id} className="bd-transactions__list-item">
                         <div className="addition">
                             <p className="date">{transaction.date}</p>

@@ -360,6 +360,10 @@ img {
     margin: 15px 0;
 }
 
+.bd-perfomance__list .bd-commonfetchfailure {
+    margin: 0;
+}
+
 .bd-perfomance h2 {
     font-size: 1rem;
     font-weight: 900;
@@ -564,6 +568,14 @@ img {
     width: 320px;
 }
 
+.bd-modal .bd-modal__body .bd-greteeng {
+    text-align: center;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-greeting__welcome {
+    padding: 15px 100px 50px 100px;
+}
+
 .bd-modal .bd-button-default {
     width: 100%;
 }
@@ -622,6 +634,19 @@ img {
 .bd-sidebar-content .bd-sidebar-content__progress {
     position: relative;
     padding: 10px;
+}
+
+.bd-sidebar-content .bd-sidebar-content__progress .avatar {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+    background: #333;
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
 }
 
 .bd-sidebar-content .bd-sidebar-content__progress img {

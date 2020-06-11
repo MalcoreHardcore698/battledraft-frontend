@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks'
-import Skeleton from 'react-skeleton-loader'
 import { Link } from 'react-router-dom'
 import { MainStreamBlock } from './../MainStream/MainStreamBlock'
 import { Greeting } from './../Greeting/Greeting'
@@ -9,7 +8,6 @@ import { CommonBlockTitle } from './CommonBlockTitle'
 import { CommonInputField } from './CommonInputField'
 import { CommonButton } from './CommonButton'
 import { CommonCheckbox } from './CommonCheckbox'
-import { CommonFetchFailure } from './../Common/CommonFetchFailure'
 import { UserAddOffer } from './../User/UserAddOffer'
 import { GET_ALL_HUBS } from './../../utils/queries'
 import { authenticateUser, closeModal } from './../../utils/actions'
@@ -21,7 +19,7 @@ export const CommonModal = () => {
     const [checked, setCheckbox] = useState(true)
     const content = useSelector(state => state)
     const dispatch = useDispatch()
-    const { loading, error, data } = useQuery(GET_ALL_HUBS, {
+    const { data } = useQuery(GET_ALL_HUBS, {
         variables: { status:  "PUBLISHED" }
     })
 
@@ -30,9 +28,6 @@ export const CommonModal = () => {
         dispatch(closeModal(content.modal.key, null))
         localStorage.removeItem('user')
     }
-
-    if (loading) return <Skeleton widthRandomness={0} width="100%" height="256px" />
-    if (error) return <CommonFetchFailure />
 
     switch (content.modal.key) {
         case 'greeting':

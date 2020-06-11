@@ -5,7 +5,7 @@ import { CircularProgressbarWithChildren, buildStyles  } from 'react-circular-pr
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // eslint-disable-next-line
-import { faBars, faCompass, faTrophy, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faBars, faCompass, faTrophy, faCog } from '@fortawesome/free-solid-svg-icons'
 import { ChatLinks } from './../Chat/ChatLinks'
 import { openModal } from './../../utils/actions'
 import Brand from './../../img/brand.png'
@@ -70,10 +70,14 @@ export const PanelSideBar = ({
                     onClick={() => setCollapse(false)}
                     className="bd-sidebar-content__progress"
                 >
-                    <img src={`${api}${state.user.avatar.replace('./', '/')}`} alt="Avatar" />
+                    <div className="avatar">
+                        {state.user ? <img src={`${api}${state.user.avatar.replace('./', '/')}`} alt="Avatar" />
+                        : <FontAwesomeIcon icon={faUser} />}
+                    </div>
+                    
                     <div className="exp">
                         <CircularProgressbarWithChildren
-                            value={state.user.experience}
+                            value={state.user ? state.user.experience : 15}
                             strokeWidth={5}
                             styles={buildStyles({
                                 strokeLinecap: 'butt'
@@ -92,8 +96,8 @@ export const PanelSideBar = ({
                     </div>
                 </div>
                 <div className="bd-sidebar-content__info">
-                    <p className="name">{state.user.name}</p>
-                    <p className="level">Уровень <span>{state.user.level}</span></p>
+                    <p className="name">{state.user ? state.user.name : 'Unknown User'}</p>
+                    <p className="level">Уровень <span>{state.user ? state.user.level : 1}</span></p>
                 </div>
             </Link>
 

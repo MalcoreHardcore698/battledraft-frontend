@@ -13,40 +13,29 @@ export const GreetingPreferences = () => {
         variables: { status:  "PUBLISHED" }
     })
     const [preferences, setPreferences] = useState([])
-
-    if (loading) return (
-        <div className="bd-perfomance bd-center">
-            <Skeleton widthRandomness={0} width="100%" height="256px" />
-        </div>
-    )
-
-    if (error) return (
-        <div className="bd-perfomance bd-center">
-            <CommonFetchFailure />
-        </div>
-    )
     
     return (
         <React.Fragment>
             <CommonBlockTitle title={`Выберите любимые игры${(preferences.length > 0) ? ` (${preferences.length})` : ''}`} />
             <p>Вы должны выбрать как минимум 3 игры. Мы подстроимся под ваши вкусы</p>
             <ul className="bd-perfomance__list">
-                {data.allHubs.map((hub, iter) =>
-                    <li
-                        key={iter}
-                        onClick={() => (preferences.find(p => p.id === hub.id)) ?
-                            setPreferences(pref => pref.filter(p => p.id !== hub.id)) :
-                            setPreferences(pref => ([ ...pref, hub ]))
-                        }
-                        className={`bd-perfomance__list-item${
-                            (preferences.find(p => p.id === hub.id)) ? ' checked' : ''
-                        }`}
-                        style={{ backgroundImage: `url(${hub.poster})`, backgroundSize: 'cover' }}
-                    >
-                        <img style={{ background: hub.color || 'gray' }} src={`${api}/${hub.icon}`} alt="Apex" />
-                        <p>{hub.title}</p>
-                    </li>    
-                )}
+                {loading ? <Skeleton widthRandomness={0} width="100%" height="256px" /> :
+                (error) ? <CommonFetchFailure /> : data.allHubs.map((hub, iter) =>
+                <li
+                    key={iter}
+                    onClick={() => (preferences.find(p => p.id === hub.id)) ?
+                        setPreferences(pref => pref.filter(p => p.id !== hub.id)) :
+                        setPreferences(pref => ([ ...pref, hub ]))
+                    }
+                    className={`bd-perfomance__list-item${
+                        (preferences.find(p => p.id === hub.id)) ? ' checked' : ''
+                    }`}
+                    style={{ backgroundImage: `url(${hub.poster})`, backgroundSize: 'cover' }}
+                >
+                    <img style={{ background: hub.color || 'gray' }} src={`${api}/${hub.icon}`} alt="Apex" />
+                    <p>{hub.title}</p>
+                </li>    
+            )}
             </ul>
         </React.Fragment>
     )
