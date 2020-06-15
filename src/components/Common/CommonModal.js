@@ -50,7 +50,7 @@ export const CommonModal = () => {
                         <CommonBlockTitle title="Информация" />
                         <div className="bd-offer">
                             <div className="title">
-                                <img src={`${api}${content.modal.content.user.avatar.replace('./', '/')}`} alt={content.modal.content.user.name} />
+                                <img src={`${api}${content.modal.content.user.avatar.path.replace('./', '/')}`} alt={content.modal.content.user.name} />
                                 <h5>{content.modal.content.user.name}</h5>
                             </div>
                             <div className="content">
@@ -58,7 +58,9 @@ export const CommonModal = () => {
                                 <p className="message">{content.modal.content.message}</p>
                             </div>
                         </div>
-                        <CommonButton text="Открыть чат" disabled={true} />
+                        <Link to={`/chats/${content.modal.content.id}`} onClick={() => dispatch(closeModal())}>
+                            <CommonButton text="Открыть чат" />
+                        </Link>
                     </div>
                 </div>
             )

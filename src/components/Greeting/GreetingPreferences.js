@@ -30,9 +30,9 @@ export const GreetingPreferences = () => {
                     className={`bd-perfomance__list-item${
                         (preferences.find(p => p.id === hub.id)) ? ' checked' : ''
                     }`}
-                    style={{ backgroundImage: `url(${hub.poster})`, backgroundSize: 'cover' }}
+                    style={{ backgroundImage: `url(${`${api}/${hub.poster.path}`})`, backgroundSize: 'cover' }}
                 >
-                    <img style={{ background: hub.color || 'gray' }} src={`${api}/${hub.icon}`} alt="Apex" />
+                    <img style={{ background: hub.color || 'gray' }} src={`${api}/${hub.icon.path}`} alt="Apex" />
                     <p>{hub.title}</p>
                 </li>    
             )}

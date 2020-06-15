@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-
+import React, { useState } from 'react'
 import { ChatMessages } from '../Chat/ChatMessages'
 import { ChatMembers } from '../Chat/ChatMembers'
 
 export const SectionChat = ({ onNewMessage }) => {
-    const content = useSelector(state => state)
+    // eslint-disable-next-line
     const [chat, setChat] = useState(null)
-    const { chatId } = useParams()
-
-    useEffect(() => {
-        const chat = content.chats.find(chat => chat.id === +chatId)
-        setChat(chat)
-    }, [content.chats, chatId])
 
     return (
         <div className="bd-chat">

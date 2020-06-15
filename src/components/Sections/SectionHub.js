@@ -22,7 +22,7 @@ export const SectionHub = () => {
         <aside className="bd-main__hub">
             <div className="bd-hubblock active">
                 <div className="content">
-                    <img src={`${api}${data.getHub.poster.replace('./', '/')}`} alt="hub 1" />
+                    <img src={`${api}${data.getHub.poster.path.replace('./', '/')}`} alt="hub 1" />
                     <p style={{ background: data.getHub.color || 'gray' }}>{data.getHub.title}<span>{data.getHub.slogan}</span></p>
                 </div>
             </div>

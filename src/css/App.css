@@ -559,8 +559,7 @@ img {
     margin: 0 15px;
     overflow-y: auto;
     max-height: calc(100vh - 250px);
-    max-width: 525px;
-    min-width: 320px;
+    max-width: 70%;
     scrollbar-width: none;
 }
 
@@ -574,6 +573,59 @@ img {
 
 .bd-modal .bd-modal__body .bd-greteeng .bd-greeting__welcome {
     padding: 15px 100px 50px 100px;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-greeting__welcome .bd-brandlogo {
+    width: 256px;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(128px, 128px));
+    grid-gap: 15px;
+    margin-bottom: 15px;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item {
+    position: relative;
+    border: none;
+    background: white;
+    height: 128px;
+    border-radius: var(--border-radius);
+    border: var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item:hover {
+    opacity: .75;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item .avatar {
+    width: 100%;
+    height: 100%;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item .hub {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    background: white;
+    border-radius: var(--border-radius) 0 var(--border-radius) 0;
+}
+
+.bd-modal .bd-modal__body .bd-greteeng .bd-avatar__list .bd-avatar__list-item .hub img {
+    filter: brightness(.75);
 }
 
 .bd-modal .bd-button-default {

@@ -11,7 +11,7 @@ export const UserOffer = ({ offer }) => {
         <li onClick={() => dispatch(openModal('offer', offer))}>
             <div className="hub" style={{ background: offer.hub.color || 'none' }}></div>
             <div className="title">
-                <img src={`${api}${offer.user.avatar.replace('./', '/')}`} alt={offer.user.name} />
+                <img src={`${api}${offer.user.avatar.path.replace('./', '/')}`} alt={offer.user.name} />
                 <h5>{offer.user.name}</h5>
             </div>
             <div className="message">

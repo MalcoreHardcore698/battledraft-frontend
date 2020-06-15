@@ -8,7 +8,7 @@ export const ArticleContent = ({ article, tag="preview" }) => {
     return (
         <article className={`${article.type} ${tag}`}>
             <div className="image">
-                <img src={`${api}${article.image.replace('./', '/')}`} alt="Poster" />
+                <img src={`${api}${article.image.path.replace('./', '/')}`} alt="Poster" />
             </div>
             <div className="text">
                 <div className="body">

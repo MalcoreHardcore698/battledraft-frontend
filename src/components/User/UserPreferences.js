@@ -11,14 +11,14 @@ export const UserPreferences = () => {
     return (
         <div className="bd-user-preferences">
             <div className="bd-title-group">
-                <h2><FontAwesomeIcon icon={faTrophy} />Предпочтительные сообщества</h2>
+                <h2><FontAwesomeIcon icon={faTrophy} />Любимые сообщества</h2>
             </div>
 
             <div className="bd-navigator__hublist">
                 {state.user.preferences.map((hub, i) =>
                     <div key={i} className="bd-hubblock">
                         <div className="content">
-                            <img src={`${api}${hub.icon.replace('./', '/')}`} alt={hub.icon} />
+                            <img src={`${api}${hub.icon.path.replace('./', '/')}`} alt={hub.icon.name} />
                             <div className="info">
                                 <p className="title">{hub.title}</p>
                                 <p className="slogan">{hub.slogan}</p>

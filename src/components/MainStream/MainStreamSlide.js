@@ -11,7 +11,7 @@ export const MainStreamSlide = ({ hub, active }) => {
             className={`bd-hubblock slide${active ? ' active' : ''}`}
         >
             <div className="content">
-                <img src={`${api}${hub.poster.replace('./', '/')}`} alt="Game 1" />
+                <img src={`${api}${hub.poster.path.replace('./', '/')}`} alt="Game 1" />
                 <p style={{ background: hub.color || 'gray' }}>{hub.title}<span>{hub.slogan}</span></p>
             </div>
         </Link>

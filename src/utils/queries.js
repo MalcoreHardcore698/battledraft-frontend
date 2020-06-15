@@ -8,7 +8,11 @@ export const GET_ALL_OFFERS = gql`
             message
             user {
                 name
-                avatar
+                avatar {
+                    id
+                    name
+                    path
+                }
             }
             hub {
                 id
@@ -26,8 +30,16 @@ export const GET_ALL_HUBS = gql`
             title
             description
             slogan
-            icon
-            poster
+            icon {
+                id
+                name
+                path
+            }
+            poster {
+                id
+                name
+                path
+            }
             color
         }
     }
@@ -39,7 +51,11 @@ export const GET_ALL_NEWS = gql`
             id
             title
             body
-            image
+            image {
+                id
+                name
+                path
+            }
             hub {
                 title
             }
@@ -54,7 +70,11 @@ export const GET_NEWS = gql`
             id
             title
             body
-            image
+            image {
+                id
+                name
+                path
+            }
             hub {
                 id
                 title
@@ -113,6 +133,27 @@ export const GET_ALL_TOURNAMENTS = gql`
     }
 `
 
+export const GET_ALL_AVATARS = gql`
+  query {
+    allAvatars {
+      id
+      order
+      name
+      path
+      complexity
+      hub {
+        id
+        title
+        color
+        icon {
+          id
+          path
+        }
+      }
+    }
+  }
+`
+
 export const GET_ALL_USER_CHATS = gql`
     query {
         allUserRoles
@@ -131,13 +172,20 @@ export const GET_USER = gql`
             balance
             level
             experience
-            avatar
+            avatar {
+                id
+                name
+                path
+            }
             preferences {
                 id
                 title
                 color
                 slogan
-                icon
+                icon {
+                    name
+                    path
+                }
             }
             dateLastAuth
             dateRegistration
@@ -154,15 +202,27 @@ export const GET_HUB = gql`
             title
             description
             slogan
-            icon
-            poster
+            icon {
+                id
+                name
+                path
+            }
+            poster {
+                id
+                name
+                path
+            }
             color
             offers {
                 title
                 message
                 user {
                     name
-                    avatar
+                    avatar {
+                        id
+                        name
+                        path
+                    }
                 }
                 hub {
                     color
@@ -209,7 +269,11 @@ export const GET_USER_OFFERS = gql`
             user {
                 id
                 name
-                avatar
+                avatar {
+                    id
+                    name
+                    path
+                }
             }
             hub {
                 id
@@ -240,7 +304,11 @@ export const AUTH_USER = gql`
             balance
             level
             experience
-            avatar
+            avatar {
+                id
+                name
+                path
+            }
             preferences {
                 id
                 title

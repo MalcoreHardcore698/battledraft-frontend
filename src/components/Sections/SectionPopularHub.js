@@ -32,7 +32,7 @@ export const SectionPopularHub = ({ filter, setFilter }) => {
                         style={{ background: hub.id === filter ? hub.color : 'none'}}
                     >
                         <div className="content">
-                            <img src={`${api}${hub.icon.replace('./', '/')}`} alt={hub.icon} />
+                            <img src={`${api}${hub.icon.path.replace('./', '/')}`} alt={hub.icon.name} />
                             <div className="info">
                                 <p className="title">{hub.title}</p>
                                 <p className="slogan">{hub.slogan}</p>

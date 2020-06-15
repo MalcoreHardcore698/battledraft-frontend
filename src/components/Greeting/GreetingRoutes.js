@@ -1,5 +1,6 @@
 import React from 'react'
 import { GreetingWelcome } from './GreetingWelcome'
+import { GreetingAvatars } from './GreetingAvatars'
 import { GreetingPreferences } from './GreetingPreferences'
 
 export const GreetingRoutes = ({ step }) => {
@@ -7,7 +8,7 @@ export const GreetingRoutes = ({ step }) => {
         case 1:
             return <GreetingWelcome /> 
         case 2:
-            return <p>Выберите аватар</p>
+            return <GreetingAvatars />
         case 3:
             return <GreetingPreferences />
         case 4:

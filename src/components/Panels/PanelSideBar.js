@@ -71,7 +71,7 @@ export const PanelSideBar = ({
                     className="bd-sidebar-content__progress"
                 >
                     <div className="avatar">
-                        {state.user ? <img src={`${api}${state.user.avatar.replace('./', '/')}`} alt="Avatar" />
+                        {state.user ? <img src={`${api}${state.user.avatar.path.replace('./', '/')}`} alt="Avatar" />
                         : <FontAwesomeIcon icon={faUser} />}
                     </div>
                     
