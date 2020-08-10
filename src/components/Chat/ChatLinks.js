@@ -1,42 +1,50 @@
-import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSubscription } from '@apollo/react-hooks'
+import { useSelector, useDispatch } from 'react-redux'
 import { ChatLink } from './ChatLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { openModal } from './../../utils/actions'
-import { GET_ALL_USER_CHATS } from './../../utils/queries'
+import { openModal, addChat } from './../../utils/actions'
+import { USER_CHAT_SUBSCRIPTION } from './../../utils/queries'
+import Skeleton from 'react-skeleton-loader'
 
 export const ChatLinks = () => {
-    const { data } = useQuery(GET_ALL_USER_CHATS)
+    const state = useSelector(state => state)
     const dispatch = useDispatch()
+
+    const { data, loading } = useSubscription(USER_CHAT_SUBSCRIPTION, {
+        variables: { user: state.user.id }
+    })
+
+    useEffect(() => {
+        if (data && data.userchats) {
+            console.log('UPDATED')
+            data.userchats.forEach(userchat =>
+                dispatch(addChat(userchat.chatId))    
+            )
+        }
+    }, [])
 
     return (
         <div className="bd-openchats">
-            {(data &&  data.allUserChats && data.allUserChats.find(chat => chat.type === 'personal')) ?
-                <React.Fragment>
-                    <ul className={`bd-openchats__personal`}>
-                        {data.allUserChats.filter(chat => chat.type === 'personal').map(currentChat =>
-                            <ChatLink
-                                key={currentChat.id}
-                                chat={currentChat}
-                            />
-                        )}
-                        <li className="bd-chat-new" onClick={() => dispatch(openModal('new-personal-chat', null))}><FontAwesomeIcon icon={faPlus} /></li>
-                    </ul>
-
-                    <div className="bd-break"></div>
-                </React.Fragment>
-            : ''}
-
             <ul className={`bd-openchats__group`}>
-                {data && data.allUserChats && data.allUserChats.filter(chat => chat.type === 'group').map(currentChat =>
+                {((data && data.userchats) || state.user.chats).map(chat =>
                     <ChatLink
-                        key={currentChat.id}
-                        chat={currentChat}
+                        key={chat.chatId}
+                        chat={chat.chatId}
                     />
                 )}
-                <li className="bd-chat-new" onClick={() => dispatch(openModal('new-group-chat', null))}><FontAwesomeIcon icon={faPlus} /></li>
+
+                {(loading && !data && data?.userchats) && <li>
+                    <Skeleton widthRandomness={0} width="100%" height="45px" />
+                </li>}
+
+                <li
+                    className="bd-chat-new"
+                    onClick={() => dispatch(openModal('new-group-chat', null))}
+                >
+                    <FontAwesomeIcon icon={faPlus} />
+                </li>
             </ul>
         </div>
     )

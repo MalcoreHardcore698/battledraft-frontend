@@ -7,6 +7,7 @@ export const GET_ALL_OFFERS = gql`
             title
             message
             user {
+                id
                 name
                 avatar {
                     id
@@ -154,12 +155,6 @@ export const GET_ALL_AVATARS = gql`
   }
 `
 
-export const GET_ALL_USER_CHATS = gql`
-    query {
-        allUserRoles
-    }
-`
-
 export const GET_USER = gql`
     query getUser($id: ID!) {
         getUser(id: $id) {
@@ -186,6 +181,9 @@ export const GET_USER = gql`
                     name
                     path
                 }
+            }
+            chats {
+                chatId
             }
             dateLastAuth
             dateRegistration
@@ -217,6 +215,7 @@ export const GET_HUB = gql`
                 title
                 message
                 user {
+                    id
                     name
                     avatar {
                         id
@@ -228,6 +227,129 @@ export const GET_HUB = gql`
                     color
                 }
             }
+        }
+    }
+`
+
+export const ADD_CHAT = gql`
+    mutation addChat(
+        $id: ID!
+        $title: String!
+        $participants: [UserIDInput!]!
+        $owner: ID!
+    ) {
+        addChat(
+            id: $id
+            title: $title
+            participants: $participants
+            owner: $owner
+        )
+    }
+`
+
+export const GET_CHAT = gql`
+    query getChat(
+        $id: ID!
+    ) {
+        getChat(
+            id: $id
+        ) {
+            id
+            title
+            owner
+            participants {
+                id
+                name
+                avatar {
+                    id
+                    path
+                }
+            }
+            messages {
+                sender {
+                    id
+                    name
+                    avatar {
+                        id
+                        path
+                    }
+                }
+                receiver {
+                    id
+                    name
+                    avatar {
+                        id
+                        path
+                    }
+                }
+                message
+                dateCreated
+            }
+            dateCreated
+        }
+    }
+`
+
+export const CLOSE_USER_CHAT = gql`
+    mutation closeUserChat(
+        $userId: ID!
+        $chatId: ID!
+    ) {
+        closeUserChat(
+            userId: $userId
+            chatId: $chatId
+        )
+    }
+`
+
+export const ADD_MESSAGE = gql`
+    mutation addMessage(
+        $chat: ID!
+        $sender: ID!
+        $receiver: ID!
+        $message: String!
+    ) {
+        addMessage(
+            chat: $chat
+            sender: $sender
+            receiver: $receiver
+            message: $message
+        )
+    }
+`
+
+export const ADD_MESSAGE_SUBSCRIPTION = gql`
+    subscription messages($chat: ID!) {
+        messages (chat: $chat) {
+            id
+            message
+            sender {
+                id
+                name
+                avatar {
+                    id
+                    path
+                }
+            }
+            receiver {
+                id
+                name
+                avatar {
+                    id
+                    path
+                }
+            }
+            dateCreated
+        }
+    }
+`
+
+export const USER_CHAT_SUBSCRIPTION = gql`
+    subscription userchats($user: ID!) {
+        userchats(user: $user) {
+            id
+            userId
+            chatId
         }
     }
 `

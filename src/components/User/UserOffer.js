@@ -15,6 +15,7 @@ export const UserOffer = ({ offer }) => {
                 <h5>{offer.user.name}</h5>
             </div>
             <div className="message">
+                <p>{offer.title}</p>
                 <p>{offer.message}</p>
             </div>
         </li>

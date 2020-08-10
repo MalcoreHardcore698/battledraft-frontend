@@ -1,7 +1,9 @@
 import React from 'react'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { config } from './../../utils/config'
+
+const api = config.get('api')
 
 export const ChatMembers = ({ chat }) => {
     return (
@@ -13,9 +15,12 @@ export const ChatMembers = ({ chat }) => {
                     <p>Пусто</p>
                 : ''}
 
-                {(chat && chat.members && chat.members.length > 0) ? chat.members.map(member =>
-                    <li className="bd-members__list-item">
-                        <img src={member.avatar} alt={member.name} />
+                {(chat && chat.members && chat.members.length > 0) ? chat.members.map((member, index) =>
+                    <li
+                        key={index}
+                        className="bd-members__list-item"
+                    >
+                        <img src={`${api}${member.avatar.path.replace('./', '/')}`} alt={member.name} />
                         <p>{member.name}</p>
                     </li>
                 ) : ''}

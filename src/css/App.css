@@ -161,8 +161,8 @@ img {
 }
 
 .bd-button-default:hover {
-    background: #d4d4d4;
-    color: #565656;
+    background: #d4d4d4 !important;
+    color: #565656 !important;
 }
 
 .bd-groupfield {
@@ -482,6 +482,8 @@ img {
 }
 
 .react-skeleton-load {
+    display: flex;
+    position: absolute;
     margin-bottom: 10px;
 }
 
@@ -560,6 +562,7 @@ img {
     overflow-y: auto;
     max-height: calc(100vh - 250px);
     max-width: 70%;
+    min-width: 25%;
     scrollbar-width: none;
 }
 
@@ -651,7 +654,8 @@ img {
     border: var(--border);
     padding: 10px 15px;
     margin: 15px;
-    width: 320px;
+    max-width: 70%;
+    min-width: 25%;
     text-align: center;
     font-weight: 600;
     transition: var(--transition);
@@ -751,6 +755,7 @@ img {
     justify-content: flex-start;
     margin: 15px;
     padding: 0;
+    height: 45px;
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: var(--transition);
@@ -1122,8 +1127,8 @@ img {
 }
 
 .bd-main .bd-chat .bd-members .bd-members__list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-gap: 10px;
     background: white;
     border: var(--border);
     border-radius: var(--border-radius);
@@ -1182,6 +1187,7 @@ img {
 
 .bd-main .bd-messages .history .message.my {
     flex-direction: row-reverse;
+    text-align: right;
 }
 
 .bd-main .bd-messages .history .message img {
@@ -1198,7 +1204,7 @@ img {
     padding: 15px;
     border-radius: 10px;
     background: #f5f5f5;
-    width: 65%;
+    max-width: 65%;
     word-break: break-all;
     white-space: normal;
 }
@@ -1232,11 +1238,14 @@ img {
 }
 
 .bd-main .bd-messages .form button {
+    height: 100%;
     width: 35px;
     min-width: 35px;
+    padding: 0;
     background: #efefef;
     border-radius: 5px;
     color: #a5a5a5;
+    border: none;
 }
 
 .bd-app.default,
@@ -1375,7 +1384,6 @@ img {
 
 .bd-modal .bd-offer {
     margin: 15px 0;
-    width: 325px;
     cursor: default;
 }
 
@@ -1659,10 +1667,9 @@ img {
 .bd-sidefeed__popular .block > a > .title > img,
 .bd-sidefeed__groupchats .block > a > .title > img {
     border-radius: 10px;
-    width: 22px;
-    height: 22px;
+    width: 45px;
+    height: 45px;
     background: var(--accent-default);
-    padding: 10px;
 }
 
 .bd-sidefeed__popular .block .offers {
@@ -1855,7 +1862,7 @@ img {
     margin: 5px 0 0 0;
 }
 
-.bd-sidebar .bd-openchats ul li a.bd-chat__close {
+.bd-sidebar .bd-openchats ul li button.bd-chat__close {
     display: none;
     justify-content: center;
     align-items: center;
@@ -1863,21 +1870,24 @@ img {
     z-index: 95;
     top: 5px;
     right: 0;
-    background: #333;
-    border: 2px solid white;
-    color: white;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-size: .75rem;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    color: white !important;
+    border-radius: 50% !important;
+    background: #333 !important;
+    border: 2px solid white !important;
+    padding: 0 !important;
+    font-size: .75rem !important;
     transition: all .3s ease;
 }
 
-.bd-sidebar .bd-openchats ul li a.bd-chat__close:hover {
+.bd-sidebar .bd-openchats ul li button.bd-chat__close:hover {
     opacity: .75;
 }
 
-.bd-sidebar .bd-openchats ul li:hover a.bd-chat__close {
+.bd-sidebar .bd-openchats ul li:hover button.bd-chat__close {
     display: flex;
 }
 

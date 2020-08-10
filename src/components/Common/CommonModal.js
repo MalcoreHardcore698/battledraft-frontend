@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks'
 import { Link } from 'react-router-dom'
@@ -6,11 +7,11 @@ import { MainStreamBlock } from './../MainStream/MainStreamBlock'
 import { Greeting } from './../Greeting/Greeting'
 import { CommonBlockTitle } from './CommonBlockTitle'
 import { CommonInputField } from './CommonInputField'
-import { CommonButton } from './CommonButton'
+import { CommonMutationButton } from './CommonMutationButton'
 import { CommonCheckbox } from './CommonCheckbox'
 import { UserAddOffer } from './../User/UserAddOffer'
-import { GET_ALL_HUBS } from './../../utils/queries'
-import { authenticateUser, closeModal } from './../../utils/actions'
+import { GET_ALL_HUBS, ADD_CHAT } from './../../utils/queries'
+import { authenticateUser, closeModal, addChat } from './../../utils/actions'
 import { config } from './../../utils/config'
 
 const api = config.get('api')
@@ -19,6 +20,8 @@ export const CommonModal = () => {
     const [checked, setCheckbox] = useState(true)
     const content = useSelector(state => state)
     const dispatch = useDispatch()
+    let history = useHistory()
+
     const { data } = useQuery(GET_ALL_HUBS, {
         variables: { status:  "PUBLISHED" }
     })
@@ -58,9 +61,31 @@ export const CommonModal = () => {
                                 <p className="message">{content.modal.content.message}</p>
                             </div>
                         </div>
-                        <Link to={`/chats/${content.modal.content.id}`} onClick={() => dispatch(closeModal())}>
-                            <CommonButton text="Открыть чат" />
-                        </Link>
+
+                        {(content.user.id !== content.modal.content.user.id) &&
+                            <CommonMutationButton options={{
+                                text: 'Открыть чат',
+                                classes: ['bd-chat__close'],
+                                mutation: ADD_CHAT,
+                                variables: {
+                                    id: content.user.id,
+                                    title: content.modal.content.title,
+                                    participants: [
+                                        { id: content.user.id },
+                                        { id: content.modal.content.user.id }
+                                    ],
+                                    owner: content.modal.content.user.id
+                                },
+                                handler: (res) => {
+                                    const chatId = res.data.addChat
+                                    
+                                    dispatch(addChat(chatId))
+                                    dispatch(closeModal())
+
+                                    history.push(`/chats/${chatId}`)
+                                }
+                            }} />
+                        }
                     </div>
                 </div>
             )

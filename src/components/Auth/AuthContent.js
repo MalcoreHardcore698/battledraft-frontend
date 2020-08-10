@@ -10,15 +10,14 @@ import Loading from './../../img/loading.svg'
 
 export const AuthContent = ({ method }) => {
     const [authUser, { loading, data }] = useLazyQuery(AUTH_USER)
+
     const dispatch = useDispatch()
     const form = useRef(null)
 
     const [invalidLogin, setInvalidLogin] = useState(false)
     const [invalidPassword, setInvalidPassword] = useState(false)
 
-    const handlerSubmit = (e) => {
-        e.preventDefault()
-
+    const handlerSubmit = () => {
         if (form.current) {
             const name = form.current.login.value
             const password = form.current.password.value

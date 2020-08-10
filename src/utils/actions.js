@@ -18,18 +18,11 @@ export function preferencesUser(preferences) {
     }
 }
 
-export function chooseChat(chat) {
+export function addChat(chatId) {
     return {
-        type: C.CHOOSE_CHAT,
-        payload: chat
-    }
-}
-
-export function openChat(chatId, chats) {
-    return {
-        type: C.OPEN_CHAT,
+        type: C.ADD_CHAT,
         payload: {
-            chatId, chats
+            chatId
         }
     }
 }
